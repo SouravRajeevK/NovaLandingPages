@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free family law guidance — Nova</title>
+  <style>
+    @font-face { font-family: "Perfectly Nineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-style: normal; font-display: swap; }
+    * { box-sizing: border-box; margin: 0; }
+    html {
+      overflow-x: clip;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      font-family: "Neue Haas Display", system-ui, sans-serif;
+      color: #2d3748;
+      -webkit-font-smoothing: antialiased;
+      background: #f7f8fa;
+      min-height: 100dvh;
+      min-height: 100vh;
+      overflow-x: clip;
+      overflow-y: auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.1;
+      background: url("gradients/backgradientpink.png") center/cover no-repeat;
+      filter: saturate(0.15);
+    }
+    .hero {
+      position: relative; z-index: 1;
+      min-height: 100dvh;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding:
+        max(clamp(1.25rem, 5vw, 2.25rem), env(safe-area-inset-top))
+        max(clamp(0.75rem, 3vw, 1.5rem), env(safe-area-inset-right))
+        max(clamp(1.25rem, 5vw, 2.25rem), env(safe-area-inset-bottom))
+        max(clamp(0.75rem, 3vw, 1.5rem), env(safe-area-inset-left));
+    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; min-height: 100%; }
+    .hero-bg img {
+      width: 100%; height: 100%; min-height: 100%;
+      object-fit: cover; object-position: 50% 28%;
+    }
+    .hero-bg::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(247,248,250, 0.94) 0%,
+        rgba(255,255,255, 0.48) 40%,
+        rgba(237,242,247, 0.93) 100%
+      );
+    }
+    .hero-inner {
+      position: relative; z-index: 2; width: 100%; max-width: min(560px, 100%);
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .mark {
+      height: clamp(34px, 6vw, 44px); width: auto;
+      margin-bottom: clamp(0.9rem, 2.8vw, 1.35rem); opacity: 0.95;
+    }
+    h1 {
+      font-family: "Perfectly Nineties", Georgia, serif; font-weight: 400;
+      color: #1a202c;
+      font-size: clamp(2rem, 7.5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em;
+      margin-bottom: clamp(0.85rem, 2.4vw, 1.25rem); text-wrap: balance;
+      margin-left: auto; margin-right: auto;
+      max-width: 22ch;
+    }
+    .sub {
+      font-size: clamp(1rem, 3.2vw, 1.2rem); line-height: 1.45; color: #4a5568;
+      margin-bottom: clamp(1rem, 3vw, 1.35rem);
+      max-width: 36ch; margin-left: auto; margin-right: auto;
+    }
+    .detail {
+      font-size: clamp(0.88rem, 2.2vw, 0.98rem); line-height: 1.5; color: #4a5568;
+      margin-bottom: clamp(1.35rem, 4.5vw, 2rem);
+      max-width: 38ch; margin-left: auto; margin-right: auto;
+    }
+    .detail em { font-style: italic; color: #4a5568; }
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 100%; max-width: min(320px, 100%); padding: 0.95rem 1.5rem;
+      font-family: inherit; font-size: clamp(1rem, 2.8vw, 1.12rem); font-weight: 500;
+      color: #fff; background: #4a5568; border-radius: 999px; text-decoration: none;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+    }
+    .cta:focus-visible { outline: 2px solid #718096; outline-offset: 3px; }
+    .micro { margin-top: clamp(0.7rem, 2.2vw, 1rem); font-size: 0.78rem; color: #718096; }
+
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="v32-h">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="hero/opposite2.webp" alt="" width="800" height="1000" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="hero-inner">
+        <img class="mark" src="logo/Logo.png" alt="Nova" width="165" height="44" decoding="async" />
+        <h1 id="v32-h">Not sure what to do next about divorce or separation?</h1>
+        <p class="sub">Nova maps your situation with AI and award-winning family law professionals — so you see options clearly, without pressure.</p>
+        <p class="detail">Deadlines, children, housing, money — generic advice rarely reflects <em>your</em> circumstances. A short questionnaire (5–10 minutes) gives you a tailored summary of what to consider next, and an optional introduction to the right expert.</p>
+        <a class="cta" href="#">Get Started Now</a>
+        <p class="micro">5–10 minutes · No obligation · Secure &amp; confidential</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

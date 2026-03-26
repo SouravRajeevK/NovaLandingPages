@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free divorce & separation recommendation — Nova</title>
+  <style>
+    @font-face { font-family: "Perfectly Nineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-style: normal; font-display: swap; }
+    * { box-sizing: border-box; margin: 0; }
+    :root { --dock: calc(3.65rem + env(safe-area-inset-bottom, 0px)); }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: "Neue Haas Display", system-ui, sans-serif;
+      background: #f4f1ec; color: #334155; line-height: 1.45; -webkit-font-smoothing: antialiased;
+      min-height: 100dvh;
+      max-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.55;
+      background: url("gradients/resultquotegradientmobile.webp") 50% 100% / 100% auto no-repeat,
+        url("gradients/aboutgradient.png") -25% 30% / 55vw no-repeat;
+    }
+    main {
+      position: relative; z-index: 1;
+      flex: 1 1 auto;
+      min-height: 0;
+      max-height: calc(100dvh - var(--dock));
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      max-width: 560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero {
+      padding: 0.5rem 1.1rem 0.35rem;
+      display: flex; flex-direction: column; gap: 0.45rem;
+      flex: 0 1 auto;
+      min-height: 0;
+    }
+    .logo img { height: 30px; width: auto; }
+    .hero-ph {
+      border-radius: 14px; overflow: hidden;
+      max-height: min(22vh, 176px);
+      flex-shrink: 1;
+      min-height: 0;
+      box-shadow: 0 12px 32px rgba(15,23,42,0.1);
+    }
+    .hero-ph img { width: 100%; height: 100%; max-height: min(22vh, 176px); object-fit: cover; object-position: 50% 30%; display: block; }
+    h1 {
+      font-family: "Perfectly Nineties", Georgia, serif; font-weight: 400; color: #0c1220;
+      font-size: clamp(1.35rem, 4vw, 2.1rem); line-height: 1.08; letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+    .one-liner { font-size: clamp(0.78rem, 2vw, 0.88rem); margin: 0.2rem 0 0.4rem; }
+    .cta {
+      display: flex; justify-content: center; align-items: center;
+      width: 100%; padding: 0.75rem; font-weight: 500; color: #fff; text-decoration: none;
+      background: linear-gradient(180deg, #2f4f73, #1a2f4a); border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(26,47,74,0.28);
+    }
+    .bullets { font-size: 0.65rem; color: #64748b; margin-top: 0.25rem; text-align: center; }
+    .cards {
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 0.35rem 1.1rem 0.45rem;
+      display: grid;
+      gap: 0.35rem;
+      align-content: end;
+    }
+    @media (min-width: 480px) {
+      .cards { grid-template-columns: repeat(3, 1fr); gap: 0.45rem; align-content: stretch; }
+    }
+    .card {
+      display: grid; grid-template-columns: 44px 1fr; gap: 0.45rem; align-items: center;
+      background: rgba(255,255,255,0.72); backdrop-filter: blur(8px);
+      border-radius: 10px; padding: 0.45rem 0.5rem; border: 1px solid rgba(15,23,42,0.06);
+    }
+    @media (min-width: 480px) {
+      .card { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 0.5rem 0.35rem; }
+    }
+    .card img { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; }
+    @media (min-width: 480px) {
+      .card img { width: 40px; height: 40px; }
+    }
+    .card h2 {
+      font-family: "Perfectly Nineties", Georgia, serif; font-weight: 400; font-size: clamp(0.85rem, 2vw, 1rem); color: #0c1220;
+      margin-bottom: 0.08rem;
+    }
+    .card p { font-size: clamp(0.65rem, 1.5vw, 0.72rem); line-height: 1.35; color: #475569; }
+    .dock {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+      padding: 0.55rem 1rem max(0.55rem, env(safe-area-inset-bottom));
+      background: rgba(244,241,236,0.94); backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(15,23,42,0.08);
+    }
+    .dock .cta { border-radius: 999px; max-width: 480px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="v6-h">
+      <div class="logo"><img src="logo/Logo.png" alt="Nova" width="120" height="30" decoding="async" /></div>
+      <div class="hero-ph" aria-hidden="true">
+        <img src="hero/doorbackground.webp" alt="" width="800" height="600" fetchpriority="high" decoding="async" />
+      </div>
+      <div>
+        <h1 id="v6-h">Free recommendation for divorce &amp; separation</h1>
+        <p class="one-liner"><strong>For you if</strong> you need clarity on options, children, or money — without committing to a lawyer yet.</p>
+        <a class="cta" href="#">Get Started Now</a>
+        <p class="bullets">5–10 minutes · Secure &amp; confidential · AI + legal experts</p>
+      </div>
+    </section>
+
+    <div class="cards">
+      <article class="card">
+        <img src="hero/couplesad.webp" alt="" width="144" height="144" decoding="async" aria-hidden="true" />
+        <div>
+          <h2>Problem</h2>
+          <p>Too much noise. Not enough tailored direction.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="hero/family.webp" alt="" width="144" height="144" decoding="async" aria-hidden="true" />
+        <div>
+          <h2>Solution</h2>
+          <p>A personalised path and the right expert when you want one.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="hero/oppositecouples.webp" alt="" width="144" height="144" decoding="async" aria-hidden="true" />
+        <div>
+          <h2>Outcome</h2>
+          <p>Less guesswork. More confidence in your next step.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+  <div class="dock"><a class="cta" href="#">Get Started Now</a></div>
+</body>
+</html>
