@@ -1,159 +1,51 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nova Landing Pages - Navigation</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 20px;
-      }
-      .container {
-        max-width: 900px;
-        width: 100%;
-      }
-      h1 {
-        color: #fff;
-        font-size: 48px;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 16px;
-      }
-      .subtitle {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 18px;
-        text-align: center;
-        margin-bottom: 48px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 24px;
-        margin-bottom: 40px;
-      }
-      .card {
-        background: #fff;
-        border-radius: 16px;
-        padding: 32px 28px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-      }
-      .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-      }
-      .card-number {
-        display: inline-block;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        color: #fff;
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 16px;
-      }
-      .card-title {
-        font-size: 20px;
-        font-weight: 700;
-        color: #18102e;
-        margin-bottom: 8px;
-      }
-      .card-desc {
-        font-size: 14px;
-        color: #6a5a8a;
-        line-height: 1.6;
-      }
-      .footer {
-        text-align: center;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 14px;
-      }
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 36px;
-        }
-        .grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Nova Landing Pages</h1>
-      <p class="subtitle">Choose a landing page design to explore</p>
-
-      <div class="grid">
-        <a href="landing1.html" class="card">
-          <div class="card-number">1</div>
-          <div class="card-title">Landing Page 1</div>
-        </a>
-
-        <a href="landing2.html" class="card">
-          <div class="card-number">2</div>
-          <div class="card-title">Landing Page 2</div>
-        </a>
-
-        <a href="landing3.html" class="card">
-          <div class="card-number">3</div>
-          <div class="card-title">Landing Page 3</div>
-        </a>
-
-        <a href="landing4.html" class="card">
-          <div class="card-number">4</div>
-          <div class="card-title">Landing Page 4</div>
-        </a>
-
-        <a href="landing5.html" class="card">
-          <div class="card-number">5</div>
-          <div class="card-title">Landing Page 5</div>
-        </a>
-
-        <a href="landing6.html" class="card">
-          <div class="card-number">6</div>
-          <div class="card-title">Landing Page 6</div>
-        </a>
-
-        <a href="landing7.html" class="card">
-          <div class="card-number">7</div>
-          <div class="card-title">Landing Page 7</div>
-        </a>
-
-        <a href="landing8.html" class="card">
-          <div class="card-number">8</div>
-          <div class="card-title">Landing Page 8</div>
-        </a>
-
-        <a href="landing9.html" class="card">
-          <div class="card-number">9</div>
-          <div class="card-title">Landing Page 9</div>
-        </a>
-      </div>
-
-      <div class="footer">
-        <p>© Nova Law Testing Limited</p>
-      </div>
-    </div>
-  </body>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0; padding: 2rem max(1.25rem, env(safe-area-inset-left)) 3rem max(1.25rem, env(safe-area-inset-right)); color: #0f172a; line-height: 1.55; min-height: 100dvh; box-sizing: border-box; background: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 42%, #eef2ff 100%); -webkit-font-smoothing: antialiased; }
+    .wrap { width: min(100%, 960px); margin: 0 auto; background: rgba(255, 255, 255, 0.72); border: 1px solid rgba(226, 232, 240, 0.9); border-radius: 14px; padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2.25rem); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 40px -18px rgba(30, 64, 175, 0.12); backdrop-filter: blur(10px); }
+    h1 { font-size: clamp(1.35rem, 2vw, 1.65rem); margin: 0 0 0.75rem; font-weight: 650; letter-spacing: -0.02em; color: #0c1222; }
+    p { margin: 0 0 1rem; color: #475569; max-width: 65ch; }
+    ul { margin: 0 0 1.5rem; padding: 0; list-style: none; border: 1px solid rgba(226, 232, 240, 0.95); border-radius: 10px; overflow: hidden; }
+    li { margin: 0; border-bottom: 1px solid rgba(226, 232, 240, 0.95); }
+    li:last-child { border-bottom: none; }
+    li:hover { background: rgba(241, 245, 249, 0.55); }
+    .page-row { width: 100%; box-sizing: border-box; }
+    .page-row a { display: block; width: 100%; text-align: center; padding: 0.85rem 1rem; box-sizing: border-box; }
+    a { color: #1d4ed8; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(29, 78, 216, 0.35); transition: color 0.15s ease, text-decoration-color 0.15s ease, background-color 0.15s ease; }
+    a:hover { color: #1e3a8a; text-decoration-color: rgba(30, 58, 138, 0.55); }
+    a:focus-visible { outline: 2px solid #6366f1; outline-offset: 3px; border-radius: 2px; }
+    .note { font-size: 0.9rem; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Nova </h1>
+    <ul>
+      <li><div class="page-row"><a href="landing1.html">landing1.html</a></div></li>
+      <li><div class="page-row"><a href="landing2.html">landing2.html</a></div></li>
+      <!-- <li><a href="landing3.html">landing3.html</a></li> -->
+      <li><div class="page-row"><a href="landing4.html">landing4.html</a></div></li>
+      <!-- <li><a href="landing5.html">landing5.html</a></li> -->
+      <!-- <li><a href="landing6.html">landing6.html</a></li> -->
+      <!-- <li><div class="page-row"><a href="landing7.html">landing7.html</a></div></li> -->
+      <!-- <li><div class="page-row"><a href="landing8.html">landing8.html</a></div></li> -->
+      <!-- <li><a href="landing9.html">landing9.html</a></li> -->
+      <!-- <li><a href="landing10.html">landing10.html</a></li> -->
+      <li><div class="page-row"><a href="landing11.html">landing11.html</a></div></li>
+      <li><div class="page-row"><a href="landing12.html">landing12.html</a></div></li>
+      <li><div class="page-row"><a href="landing13.html">landing13.html</a></div></li>
+      <li><div class="page-row"><a href="landing14.html">landing14.html</a></div></li>
+      <li><div class="page-row"><a href="landing15.html">landing15.html</a></div></li>
+      <li><div class="page-row"><a href="landing16.html">landing16.html</a></div></li>
+      <li><div class="page-row"><a href="landing17.html">landing17.html</a></div></li>
+      <li><div class="page-row"><a href="landing18.html">landing18.html</a></div></li>
+      <!-- <li><div class="page-row"><a href="landing19.html">landing19.html</a></div></li> -->
+      <li><div class="page-row"><a href="landing20.html">landing20.html</a></div></li>
+    </ul>
+  </div>
+</body>
 </html>

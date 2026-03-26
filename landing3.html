@@ -1,776 +1,110 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nova – Clarity Through Separation</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --ink: #0f0f0f;
-        --soft: #f7f5f2;
-        --warm: #f2e8d8;
-        --accent: #d4600a;
-        --muted: #888;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "IBM Plex Sans", sans-serif;
-        background: var(--soft);
-        color: var(--ink);
-        line-height: 1.6;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova — Trusted results | Divorce &amp; separation</title>
+  <style>
+    @font-face { font-family: "NeueHaasDisplay"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "NeueHaasDisplay"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-display: swap; }
+    @font-face { font-family: "PerfectlyNineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "PerfectlyNineties"; src: url("fonts/PerfectlyNineties-Italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
 
-      /* NAV */
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 24px 64px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      }
-      nav img {
-        height: 30px;
-      }
-      .nav-r {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-      }
-      .nav-r a {
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .nav-btn {
-        background: var(--ink);
-        color: var(--soft);
-        border: none;
-        padding: 10px 24px;
-        font-family: "IBM Plex Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        letter-spacing: 0.3px;
-      }
+    :root { --ink: #0f172a; --muted: #64748b; --line: #e2e8f0; --container: min(100% - 2.5rem, 1320px); }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "NeueHaasDisplay", system-ui, sans-serif; color: var(--ink); background: #fff; line-height: 1.5; font-size: clamp(1rem, 0.96rem + 0.15vw, 1.0625rem); }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2 { font-family: "PerfectlyNineties", Georgia, serif; font-weight: 400; line-height: 1.06; }
+    .container { width: var(--container); margin-inline: auto; }
+    .btn { display: inline-flex; padding: 0.85rem 1.5rem; border-radius: 8px; font-family: inherit; font-weight: 500; text-decoration: none; background: var(--ink); color: #fff; border: none; cursor: pointer; }
+    .btn:hover { opacity: 0.9; }
+    header { border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; flex-wrap: wrap; gap: 1rem; }
+    .nav img { height: 32px; width: auto; }
+    .nav-cta { display: flex; gap: 0.6rem; align-items: center; }
 
-      /* HERO */
-      .hero {
-        padding: 120px 64px;
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: center;
-      }
-      .hero-left {
-      }
-      .eyebrow {
-        font-size: 12px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 28px;
-        display: block;
-      }
-      h1 {
-        font-family: "Libre Baskerville", serif;
-        font-size: clamp(36px, 4.5vw, 58px);
-        line-height: 1.15;
-        font-weight: 700;
-        margin-bottom: 28px;
-      }
-      h1 em {
-        font-style: italic;
-        color: var(--accent);
-      }
-      .hero-p {
-        font-size: 17px;
-        line-height: 1.8;
-        color: #444;
-        margin-bottom: 40px;
-        max-width: 460px;
-      }
-      .hero-cta {
-        display: inline-block;
-        background: var(--accent);
-        color: #fff;
-        padding: 16px 36px;
-        font-size: 15px;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        transition: background 0.2s;
-      }
-      .hero-cta:hover {
-        background: #b5500a;
-      }
-      .hero-sub {
-        font-size: 13px;
-        color: var(--muted);
-        margin-top: 14px;
-      }
-      .hero-right {
-        position: relative;
-      }
-      .hero-right img.bg {
-        width: 100%;
-        aspect-ratio: 3/4;
-        object-fit: cover;
-        border-radius: 2px;
-      }
-      .hero-right img.person {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 90%;
-        object-fit: contain;
-      }
+    .hero-metrics { width: 100%; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #fff; padding: clamp(2.5rem, 5vw, 4rem) 0; }
+    .hero-metrics .kicker { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin: 0 0 1rem; }
+    .hero-metrics h1 { font-size: clamp(2rem, 3.5vw, 3rem); margin: 0 0 0.75rem; color: #fff; max-width: 22ch; }
+    .hero-metrics .sub { margin: 0 0 2rem; color: rgba(255,255,255,0.75); max-width: 48ch; font-size: 1.02rem; }
+    .metrics-row { display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .metrics-row { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; } }
+    @media (min-width: 1100px) { .metrics-row { grid-template-columns: repeat(4, 1fr); } }
+    .metric { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 1.25rem; }
+    .metric strong { font-family: "PerfectlyNineties", serif; font-size: clamp(1.65rem, 2.3vw, 2.1rem); display: block; margin-bottom: 0.35rem; }
+    .metric span { font-size: 0.82rem; opacity: 0.92; line-height: 1.45; }
+    .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .hero-actions .btn { background: #fff; color: var(--ink); }
 
-      /* DIVIDER */
-      .divider {
-        border: none;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        margin: 0 64px;
-      }
+    .roi { padding: clamp(3rem, 6vw, 5rem) 0; }
+    .roi h2 { font-size: clamp(1.6rem, 2vw, 2rem); margin: 0 0 1.5rem; }
+    .roi-grid { display: grid; gap: 1rem; }
+    @media (min-width: 900px) { .roi-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .roi-card { border: 1px solid var(--line); border-radius: 12px; padding: 1.5rem; }
+    .roi-card h3 { font-family: "NeueHaasDisplay", sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; }
+    .roi-card .big { font-size: 1.65rem; font-weight: 500; margin: 0 0 0.35rem; font-family: "PerfectlyNineties", serif; }
+    .roi-card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
-      /* STATS */
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        padding: 64px;
-        gap: 0;
-      }
-      .stat {
-        padding: 0 48px;
-        border-right: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      .stat:last-child {
-        border-right: none;
-      }
-      .stat-n {
-        font-family: "Libre Baskerville", serif;
-        font-size: 52px;
-        font-weight: 700;
-        color: var(--accent);
-        line-height: 1;
-      }
-      .stat-l {
-        font-size: 14px;
-        color: var(--muted);
-        margin-top: 8px;
-        line-height: 1.5;
-      }
+    .wide-img { margin: 2rem 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+    .aw { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; padding: 2rem 0; border-top: 1px solid var(--line); }
+    .aw img { height: 42px; width: auto; }
 
-      /* PROBLEM */
-      .problem-section {
-        background: var(--ink);
-        padding: 96px 64px;
-        color: var(--soft);
-      }
-      .problem-section .inner {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .problem-section .lbl {
-        font-size: 12px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 24px;
-        display: block;
-      }
-      .problem-section h2 {
-        font-family: "Libre Baskerville", serif;
-        font-size: clamp(28px, 3.5vw, 44px);
-        line-height: 1.2;
-        margin-bottom: 40px;
-      }
-      .problem-cols {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-      }
-      .problem-col h4 {
-        font-size: 11px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 20px;
-      }
-      .problem-col ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .problem-col ul li {
-        font-size: 15px;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.75);
-        padding-left: 20px;
-        position: relative;
-      }
-      .problem-col ul li::before {
-        content: "—";
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-      }
+    .cta { text-align: center; padding: 3rem 0; background: #f8fafc; border-top: 1px solid var(--line); }
+    footer { padding: 1.5rem 0; font-size: 0.8rem; color: var(--muted); }
+    .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+    .foot a { color: var(--ink); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header><div class="container nav">
+    <a href="#"><img src="logo/Logo.png" alt="Nova" width="130" height="36" /></a>
+    <div class="nav-cta"><a class="btn" href="#cta">Get started now</a></div>
+  </div></header>
 
-      /* HOW IT WORKS */
-      .hiw {
-        padding: 96px 64px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .hiw .lbl {
-        font-size: 12px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 24px;
-        display: block;
-      }
-      .hiw h2 {
-        font-family: "Libre Baskerville", serif;
-        font-size: clamp(28px, 3.5vw, 44px);
-        margin-bottom: 64px;
-      }
-      .steps-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-      .step-row {
-        display: grid;
-        grid-template-columns: 60px 1fr;
-        gap: 32px;
-        align-items: start;
-        padding: 40px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      }
-      .step-row:last-child {
-        border-bottom: none;
-      }
-      .step-n {
-        font-family: "Libre Baskerville", serif;
-        font-size: 36px;
-        color: rgba(0, 0, 0, 0.15);
-        font-weight: 700;
-        line-height: 1;
-      }
-      .step-content h3 {
-        font-size: 18px;
-        font-weight: 500;
-        margin-bottom: 8px;
-      }
-      .step-content p {
-        font-size: 15px;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      /* TESTIMONIAL */
-      .test-section {
-        background: var(--warm);
-        padding: 96px 64px;
-      }
-      .test-inner {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .test-inner .lbl {
-        font-size: 12px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 40px;
-        display: block;
-      }
-      .test-list {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-      }
-      .test-item {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 40px;
-        align-items: start;
-        padding-bottom: 40px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      .test-item:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-      }
-      .test-num {
-        font-family: "Libre Baskerville", serif;
-        font-size: 72px;
-        color: rgba(0, 0, 0, 0.1);
-        font-weight: 700;
-        line-height: 1;
-      }
-      .test-body blockquote {
-        font-family: "Libre Baskerville", serif;
-        font-size: 20px;
-        font-style: italic;
-        line-height: 1.65;
-        color: var(--ink);
-        margin-bottom: 16px;
-      }
-      .test-body .author {
-        font-size: 14px;
-        color: var(--muted);
-      }
-
-      /* TRUST */
-      .trust {
-        padding: 96px 64px;
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-        align-items: center;
-      }
-      .trust-text .lbl {
-        font-size: 12px;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 24px;
-        display: block;
-      }
-      .trust-text h2 {
-        font-family: "Libre Baskerville", serif;
-        font-size: clamp(26px, 3vw, 38px);
-        margin-bottom: 20px;
-      }
-      .trust-text p {
-        font-size: 15px;
-        color: #555;
-        line-height: 1.75;
-        margin-bottom: 28px;
-      }
-      .trust-text blockquote {
-        font-family: "Libre Baskerville", serif;
-        font-size: 17px;
-        font-style: italic;
-        line-height: 1.7;
-        color: var(--ink);
-        border-left: 3px solid var(--accent);
-        padding-left: 20px;
-        margin-bottom: 16px;
-      }
-      .trust-text .credit {
-        font-size: 14px;
-        color: var(--muted);
-      }
-      .trust-awards {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-      .trust-awards img {
-        width: 100%;
-        object-fit: contain;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        padding: 16px;
-        background: #fff;
-      }
-
-      /* FOUNDER */
-      .founder-min {
-        padding: 64px;
-        background: var(--ink);
-      }
-      .founder-inner {
-        max-width: 800px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 40px;
-        align-items: center;
-      }
-      .founder-inner img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        opacity: 0.9;
-      }
-      blockquote.f-quote {
-        font-family: "Libre Baskerville", serif;
-        font-size: 19px;
-        font-style: italic;
-        color: rgba(255, 255, 255, 0.85);
-        line-height: 1.7;
-        margin-bottom: 16px;
-      }
-      .f-credit {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.45);
-      }
-
-      /* CTA */
-      .cta-section {
-        padding: 120px 64px;
-        text-align: center;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      .cta-section h2 {
-        font-family: "Libre Baskerville", serif;
-        font-size: clamp(30px, 4vw, 50px);
-        margin-bottom: 20px;
-      }
-      .cta-section p {
-        font-size: 17px;
-        color: var(--muted);
-        margin-bottom: 40px;
-      }
-      .cta-section a {
-        display: inline-block;
-        background: var(--ink);
-        color: var(--soft);
-        padding: 16px 44px;
-        font-size: 15px;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-        transition: background 0.2s;
-      }
-      .cta-section a:hover {
-        background: var(--accent);
-      }
-      .cta-section small {
-        display: block;
-        margin-top: 16px;
-        font-size: 13px;
-        color: var(--muted);
-      }
-
-      footer {
-        padding: 40px 64px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      footer img {
-        height: 28px;
-      }
-      .fl {
-        display: flex;
-        gap: 24px;
-      }
-      .fl a {
-        font-size: 13px;
-        color: var(--muted);
-      }
-      footer .disc {
-        width: 100%;
-        font-size: 11px;
-        color: #bbb;
-        line-height: 1.6;
-        margin-top: 8px;
-      }
-
-      @media (max-width: 768px) {
-        nav,
-        .hero,
-        .divider,
-        .stats,
-        .problem-section,
-        .hiw,
-        .test-section,
-        .trust,
-        .founder-min,
-        .cta-section,
-        footer {
-          padding: 48px 24px;
-        }
-        .hero,
-        .problem-cols,
-        .trust {
-          grid-template-columns: 1fr;
-        }
-        .hero-right {
-          height: 280px;
-        }
-        .stats {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-        .stat {
-          border-right: none;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-          padding: 0 0 32px;
-        }
-        .founder-inner {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <img src="Logo.png" alt="Nova" />
-      <div class="nav-r">
-        <a href="#">How it works</a>
-        <a href="#">Results</a>
-        <a href="#">FAQs</a>
-        <button class="nav-btn">Get started</button>
+  <section class="hero-metrics" aria-labelledby="h1">
+    <div class="container">
+      <p class="kicker">Divorce &amp; separation · England &amp; Wales</p>
+      <h1 id="h1">Proven results from a <em>people-led</em> service</h1>
+      <p class="sub">Nova is not a law firm — we combine secure technology with regulated family lawyers and dispute-resolution experts. These figures reflect real use in difficult moments.</p>
+      <div class="metrics-row">
+        <div class="metric"><strong>94%</strong><span>of clients preferred briefing their professional online through Nova rather than a traditional face-to-face first meeting.</span></div>
+        <div class="metric"><strong>20k+</strong><span>people have used Nova for separation or divorce.</span></div>
+        <div class="metric"><strong>9/10</strong><span>clients said they would recommend Nova to family and friends.</span></div>
+        <div class="metric"><strong>£0</strong><span>for your free, personalised recommendation — professional fees only if you choose them.*</span></div>
       </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-left">
-        <span class="eyebrow">Separation &amp; Divorce Guidance</span>
-        <h1>Find the right path.<br />Start with <em>clarity</em>.</h1>
-        <p class="hero-p">
-          Nova helps you understand every option available to you — and
-          recommends the best approach for your specific situation. Free,
-          expert-backed, and available right now.
-        </p>
-        <a href="#" class="hero-cta">Get my free recommendation</a>
-        <p class="hero-sub">
-          Takes 5 minutes · Secure &amp; private · No account needed
-        </p>
-      </div>
-      <div class="hero-right">
-        <img src="pinkdoorbackground.webp" alt="A new beginning" class="bg" />
-        <img src="doorgirl.webp" alt="Moving forward" class="person" />
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- STATS -->
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-n">94%</div>
-        <div class="stat-l">
-          of clients preferred briefing their family professional online through
-          Nova
-        </div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">20k+</div>
-        <div class="stat-l">
-          people have used Nova to make sense of life's difficult moments
-        </div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">9/10</div>
-        <div class="stat-l">
-          said they would recommend Nova to friends and family
-        </div>
+      <div class="hero-actions">
+        <a class="btn" href="#cta">Get started now</a>
+        <span style="font-size:0.78rem;opacity:0.8;">*Strategic Advice Consultation and other services quoted separately.</span>
       </div>
     </div>
+  </section>
 
-    <hr class="divider" />
-
-    <!-- PROBLEM -->
-    <section class="problem-section">
-      <div class="inner">
-        <span class="lbl">The challenge</span>
-        <h2>
-          Most people don't know their options — and that costs them dearly.
-        </h2>
-        <div class="problem-cols">
-          <div class="problem-col">
-            <h4>Without guidance</h4>
-            <ul>
-              <li>Hours of confusing online research</li>
-              <li>Expensive initial solicitor consultations</li>
-              <li>Risk of choosing court when better options exist</li>
-              <li>Decisions made from fear and uncertainty</li>
-              <li>Prolonged conflict and unnecessary stress</li>
-            </ul>
-          </div>
-          <div class="problem-col">
-            <h4>With Nova</h4>
-            <ul>
-              <li>Personalised recommendation in 5 minutes</li>
-              <li>Free, expert-backed guidance from the start</li>
-              <li>Better routes presented clearly and fairly</li>
-              <li>Confidence to make the right decision</li>
-              <li>A shorter, less stressful path forward</li>
-            </ul>
-          </div>
-        </div>
+  <section class="roi" id="roi">
+    <div class="container">
+      <h2>What those numbers mean in practice</h2>
+      <div class="roi-grid">
+        <div class="roi-card"><h3>Time</h3><p class="big">Less repetition</p><p>Your answers are structured once — so experts see the picture sooner.</p></div>
+        <div class="roi-card"><h3>Trust</h3><p class="big">Clear roles</p><p>AI supports the process; legal judgement sits with regulated professionals when you need it.</p></div>
+        <div class="roi-card"><h3>Control</h3><p class="big">No surprise funnel</p><p>You see your recommendation before you commit to paid legal work.</p></div>
       </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="hiw">
-      <span class="lbl">How it works</span>
-      <h2>Three steps to your personalised plan</h2>
-      <div class="steps-list">
-        <div class="step-row">
-          <div class="step-n">01</div>
-          <div class="step-content">
-            <h3>Answer a few questions</h3>
-            <p>
-              Tell Nova about your situation — children, property, finances,
-              relationship status. Completely secure and private. Takes about 5
-              minutes.
-            </p>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-n">02</div>
-          <div class="step-content">
-            <h3>Receive your free recommendation</h3>
-            <p>
-              Nova's intelligent algorithm — built with 30+ years of family law
-              expertise — analyses your answers and recommends the approach most
-              likely to lead to a positive outcome.
-            </p>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-n">03</div>
-          <div class="step-content">
-            <h3>Connect with the right expert</h3>
-            <p>
-              When you're ready, Nova connects you with a regulated, fully
-              vetted professional — from Family Law Partners, a Chambers Top
-              Ranked, Legal 500 Top Tier firm.
-            </p>
-          </div>
-        </div>
+      <div class="wide-img"><img src="supports/alan_quote_desk.png" alt="Expert team behind Nova" width="1200" height="500" style="width:100%;max-height:380px;object-fit:cover;" /></div>
+      <div class="aw" aria-label="Recognition">
+        <img src="awards/achievement2.jpg" alt="" width="100" height="48" loading="lazy" />
+        <img src="awards/achievement9.png" alt="" width="100" height="48" loading="lazy" />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="test-section">
-      <div class="test-inner">
-        <span class="lbl">What people say</span>
-        <div class="test-list">
-          <div class="test-item">
-            <div class="test-num">"</div>
-            <div class="test-body">
-              <blockquote>
-                Clear and easy to follow. I understood why that approach was
-                recommended. It gave me the confidence to actually take the
-                first step.
-              </blockquote>
-              <div class="author">Brian D. · UK</div>
-            </div>
-          </div>
-          <div class="test-item">
-            <div class="test-num">"</div>
-            <div class="test-body">
-              <blockquote>
-                I spent three weeks trying to figure out what to do. Nova gave
-                me a clear answer in under 10 minutes, free of charge. I wish
-                I'd found it sooner.
-              </blockquote>
-              <div class="author">Amanda K. · Birmingham, UK</div>
-            </div>
-          </div>
-          <div class="test-item">
-            <div class="test-num">"</div>
-            <div class="test-body">
-              <blockquote>
-                The recommendation saved us from going straight to court. I
-                hadn't realised there were better options — Nova changed
-                everything about how we approached this.
-              </blockquote>
-              <div class="author">James T. · Manchester, UK</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <section class="cta" id="cta"><div class="container">
+    <h2 style="font-family:PerfectlyNineties,serif;font-size:clamp(1.5rem,2vw,1.85rem);margin:0 0 0.5rem;">Start with your free recommendation</h2>
+    <p style="color:var(--muted);margin:0 0 1.25rem;">5–10 minute questionnaire · Secure · England &amp; Wales</p>
+    <a class="btn" href="#cta">Get started now</a>
+  </div></section>
 
-    <!-- TRUST -->
-    <section class="trust">
-      <div class="trust-text">
-        <span class="lbl">Why trust Nova</span>
-        <h2>Built by the UK's leading family law professionals</h2>
-        <p>
-          Nova is built in partnership with Family Law Partners — one of the
-          UK's most acclaimed family law firms, Chambers Top Ranked UK 2026,
-          Legal 500 Top Tier UK 2026, and Times Best Law Firms 2026.
-        </p>
-        <blockquote>
-          "The path a couple chooses at the start of their separation or divorce
-          is the biggest factor in how positive their outcome will be. There are
-          many better options than going to court."
-        </blockquote>
-        <div class="credit">
-          Alan Larkin, Nova Founder &amp; Family Lawyer for 30+ years
-        </div>
-      </div>
-      <div class="trust-awards">
-        <img src="achievement1.png" alt="Times Best Law Firms 2026" />
-        <img src="achievement2.jpg" alt="Legal 500 Top Tier 2026" />
-        <img src="achievement5.jpg" alt="Chambers Top Ranked UK 2026" />
-        <img src="achievement9.png" alt="Family Law Awards Finalist 2025" />
-      </div>
-    </section>
-
-    <!-- FOUNDER -->
-    <section class="founder-min">
-      <div class="founder-inner">
-        <img src="alan_quote_desk.png" alt="Alan Larkin" />
-        <div>
-          <blockquote class="f-quote">
-            "Nova gives you free, expert, emotionally-intelligent guidance right
-            now when you need it most — saving you hundreds of pounds, hours of
-            time and lots of worry."
-          </blockquote>
-          <div class="f-credit">
-            Alan Larkin — Founder &amp; Chief Product Officer, Nova · Family
-            Lawyer for 30+ years
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-      <h2>Start with clarity today.</h2>
-      <p>
-        Free. Private. Personalised to your situation. Results in 5 minutes.
-      </p>
-      <a href="#">Get my free recommendation</a>
-      <small
-        >🔒 Secure &amp; private · No account needed · Regulated by the
-        SRA</small
-      >
-    </section>
-
-    <footer>
-      <img src="Logo.png" alt="Nova" />
-      <div class="fl">
-        <a href="#">User Agreement</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <p class="disc">
-        © Nova Law Testing Limited. We have an ownership relationship with
-        Family Law Partners, regulated by the Solicitors Regulation Authority.
-        You are not required to use this firm and may instruct any solicitor of
-        your choosing.
-      </p>
-    </footer>
-  </body>
+  <footer><div class="container foot">
+    <p style="margin:0;max-width:42ch;">Nova is not a law firm. Ownership link to Family Law Partners — you may choose any solicitor.</p>
+    <div><a href="#">Privacy</a> · <a href="#">Terms</a>
+    </div>
+  </div></footer>
+</body>
 </html>

@@ -1,959 +1,203 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Nova – Find the Best Way Forward for Your Separation or Divorce
-    </title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --nova-yellow: #f5c842;
-        --nova-purple: #6b3fa0;
-        --nova-pink: #e8407a;
-        --nova-dark: #1a1229;
-        --nova-mid: #2e1f4a;
-        --grad: linear-gradient(135deg, #6b3fa0 0%, #e8407a 50%, #f5c842 100%);
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "DM Sans", sans-serif;
-        background: #fff;
-        color: #1a1229;
-        overflow-x: hidden;
-      }
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova — Divorce &amp; separation guidance | AI and regulated experts</title>
+  <style>
+    @font-face { font-family: "NeueHaasDisplay"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "NeueHaasDisplay"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-display: swap; }
+    @font-face { font-family: "PerfectlyNineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "PerfectlyNineties"; src: url("fonts/PerfectlyNineties-Italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
 
-      /* NAV */
-      nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 18px 48px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        border-bottom: 1px solid rgba(107, 63, 160, 0.1);
-      }
-      .nav-logo img {
-        height: 36px;
-      }
-      .nav-links {
-        display: flex;
-        gap: 28px;
-        list-style: none;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: #1a1229;
-        font-size: 14px;
-        font-weight: 500;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover {
-        color: #6b3fa0;
-      }
-      .nav-cta {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-      }
-      .btn-ghost {
-        background: none;
-        border: 1.5px solid #1a1229;
-        padding: 9px 22px;
-        border-radius: 50px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-family: "DM Sans", sans-serif;
-      }
-      .btn-ghost:hover {
-        border-color: #6b3fa0;
-        color: #6b3fa0;
-      }
-      .btn-primary {
-        background: var(--grad);
-        border: none;
-        padding: 10px 24px;
-        border-radius: 50px;
-        font-size: 14px;
-        font-weight: 700;
-        color: #fff;
-        cursor: pointer;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-        font-family: "DM Sans", sans-serif;
-      }
-      .btn-primary:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 24px rgba(232, 64, 122, 0.4);
-      }
+    :root {
+      --ink: #0c1222;
+      --muted: #5c6578;
+      --line: #e8ecf2;
+      --surface: #f4f6fa;
+      --accent: #1e3a5f;
+      --cta: #0c1222;
+      --container: min(100% - 2.5rem, 1320px);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "NeueHaasDisplay", system-ui, sans-serif; color: var(--ink); background: #fff; line-height: 1.55; font-size: clamp(1rem, 0.96rem + 0.15vw, 1.0625rem); }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3 { font-family: "PerfectlyNineties", Georgia, serif; font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; }
+    .container { width: var(--container); margin-inline: auto; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.85rem 1.5rem; border-radius: 8px; font-family: inherit; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.92; }
+    .btn-primary { background: var(--cta); color: #fff; }
+    .btn-secondary { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1rem 0; flex-wrap: wrap; }
+    .nav img { height: 32px; width: auto; }
+    .nav-links { display: none; gap: 1.75rem; font-size: 0.9rem; }
+    @media (min-width: 900px) { .nav-links { display: flex; flex-wrap: wrap; justify-content: center; flex: 1; } }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+    .link-quiet { background: none; border: none; font: inherit; cursor: pointer; color: var(--muted); }
+    header { border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); z-index: 40; }
 
-      /* HERO */
-      .hero {
-        min-height: 92vh;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        padding: 0 48px;
-        gap: 48px;
-        background: linear-gradient(160deg, #fff 0%, #fdf5ff 40%, #fff0f5 100%);
-        position: relative;
-        overflow: hidden;
-      }
-      .hero::before {
-        content: "";
-        position: absolute;
-        right: -200px;
-        top: -200px;
-        width: 700px;
-        height: 700px;
-        background: radial-gradient(
-          circle,
-          rgba(107, 63, 160, 0.08) 0%,
-          transparent 70%
-        );
-      }
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(107, 63, 160, 0.08);
-        border: 1px solid rgba(107, 63, 160, 0.2);
-        border-radius: 50px;
-        padding: 6px 16px;
-        font-size: 13px;
-        font-weight: 600;
-        color: #6b3fa0;
-        margin-bottom: 24px;
-      }
-      .hero-badge span {
-        background: var(--grad);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      h1.hero-head {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(36px, 4.5vw, 58px);
-        line-height: 1.12;
-        font-weight: 700;
-        margin-bottom: 20px;
-      }
-      h1.hero-head em {
-        font-style: italic;
-        background: var(--grad);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .hero-sub {
-        font-size: 17px;
-        line-height: 1.7;
-        color: #4a3a6a;
-        margin-bottom: 32px;
-        max-width: 520px;
-      }
-      .hero-sub strong {
-        color: #1a1229;
-      }
-      .hero-ctas {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-      .btn-large {
-        background: var(--grad);
-        border: none;
-        padding: 16px 36px;
-        border-radius: 50px;
-        font-size: 16px;
-        font-weight: 700;
-        color: #fff;
-        cursor: pointer;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-        font-family: "DM Sans", sans-serif;
-        text-decoration: none;
-        display: inline-block;
-      }
-      .btn-large:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 36px rgba(232, 64, 122, 0.45);
-      }
-      .hero-note {
-        font-size: 13px;
-        color: #888;
-        margin-top: 12px;
-      }
-      .hero-img-col {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        height: 580px;
-      }
-      .hero-img-col img.door-bg {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 24px;
-        opacity: 0.9;
-      }
-      .hero-img-col img.person {
-        position: absolute;
-        bottom: 0;
-        right: 40px;
-        height: 88%;
-        object-fit: contain;
-        z-index: 2;
-      }
+    .hero { padding: clamp(2.5rem, 5vw, 5rem) 0; background: linear-gradient(180deg, #0c1222 0%, #152238 100%); color: #fff; }
+    .hero-grid { display: grid; gap: 2.5rem; align-items: center; }
+    @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 4rem; } }
+    .hero h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); margin: 0 0 1rem; color: #fff; }
+    .hero h1 em { font-style: italic; }
+    .hero-lead { font-size: 1.05rem; color: rgba(255,255,255,0.88); margin: 0 0 1.5rem; max-width: 48ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .hero-note { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin: 0.75rem 0 0; max-width: 42ch; }
+    .hero-visual { border-radius: 12px; overflow: hidden; }
 
-      /* PAIN STRIP */
-      .pain-strip {
-        background: var(--nova-dark);
-        padding: 64px 48px;
-        text-align: center;
-      }
-      .pain-strip h2 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(26px, 3vw, 38px);
-        color: #fff;
-        margin-bottom: 16px;
-      }
-      .pain-strip p {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 16px;
-        max-width: 620px;
-        margin: 0 auto 48px;
-      }
-      .pain-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .pain-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 28px 24px;
-        text-align: left;
-      }
-      .pain-card .icon {
-        font-size: 28px;
-        margin-bottom: 12px;
-      }
-      .pain-card h3 {
-        color: #fff;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-      .pain-card p {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 14px;
-        line-height: 1.6;
-      }
+    .relief { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--surface); }
+    .relief h2 { font-size: clamp(1.75rem, 2.5vw, 2.35rem); margin: 0 0 0.75rem; }
+    .relief > .container > .intro { color: var(--muted); max-width: 58ch; margin: 0 0 2rem; font-size: 1.05rem; }
+    .relief-grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .relief-grid { grid-template-columns: repeat(3, 1fr); } }
+    .relief-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.5rem; }
+    .relief-card h3 { font-size: 1.2rem; margin: 0 0 0.5rem; font-family: "NeueHaasDisplay", sans-serif; font-weight: 500; }
+    .relief-card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
-      /* SOLUTION */
-      .solution {
-        padding: 80px 48px;
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-        align-items: center;
-      }
-      .solution-label {
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #e8407a;
-        margin-bottom: 16px;
-      }
-      .solution h2 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(28px, 3.5vw, 44px);
-        line-height: 1.2;
-        margin-bottom: 20px;
-      }
-      .solution p {
-        font-size: 16px;
-        line-height: 1.8;
-        color: #4a3a6a;
-        margin-bottom: 24px;
-      }
-      .solution-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-      .solution-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        font-size: 15px;
-        line-height: 1.6;
-        color: #2e1f4a;
-      }
-      .solution-list li::before {
-        content: "✓";
-        width: 22px;
-        height: 22px;
-        background: var(--grad);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 12px;
-        font-weight: 700;
-        flex-shrink: 0;
-        margin-top: 1px;
-      }
-      .solution-visual {
-        background: linear-gradient(145deg, #f8f0ff, #fff5f9);
-        border-radius: 24px;
-        padding: 40px;
-        border: 1px solid rgba(107, 63, 160, 0.1);
-      }
-      .sol-stat {
-        text-align: center;
-        padding: 24px 0;
-        border-bottom: 1px solid rgba(107, 63, 160, 0.1);
-      }
-      .sol-stat:last-child {
-        border-bottom: none;
-      }
-      .sol-stat .num {
-        font-family: "Playfair Display", serif;
-        font-size: 48px;
-        font-weight: 700;
-        background: var(--grad);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .sol-stat .label {
-        font-size: 14px;
-        color: #888;
-        margin-top: 4px;
-      }
+    .split { padding: clamp(3rem, 6vw, 5rem) 0; border-bottom: 1px solid var(--line); }
+    .split-inner { display: grid; gap: 2rem; align-items: center; }
+    @media (min-width: 1024px) { .split-inner { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+    .split h2 { font-size: clamp(1.65rem, 2.2vw, 2.1rem); margin: 0 0 0.75rem; }
+    .split p { color: var(--muted); margin: 0 0 1rem; max-width: 50ch; }
+    .split-img { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
 
-      /* HOW IT WORKS */
-      .hiw {
-        padding: 80px 48px;
-        background: linear-gradient(180deg, #fff 0%, #fdf5ff 100%);
-      }
-      .hiw-inner {
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: center;
-      }
-      .hiw-inner .label {
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #6b3fa0;
-        margin-bottom: 16px;
-      }
-      .hiw-inner h2 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(28px, 3.5vw, 44px);
-        margin-bottom: 12px;
-      }
-      .hiw-inner .sub {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 56px;
-      }
-      .steps {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        position: relative;
-      }
-      .steps::before {
-        content: "";
-        position: absolute;
-        top: 36px;
-        left: 16%;
-        right: 16%;
-        height: 2px;
-        background: linear-gradient(90deg, #6b3fa0, #e8407a, #f5c842);
-        opacity: 0.3;
-      }
-      .step {
-        text-align: center;
-      }
-      .step-num {
-        width: 72px;
-        height: 72px;
-        background: var(--grad);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "Playfair Display", serif;
-        font-size: 28px;
-        color: #fff;
-        font-weight: 700;
-        margin: 0 auto 20px;
-      }
-      .step h3 {
-        font-size: 17px;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-      .step p {
-        font-size: 14px;
-        color: #666;
-        line-height: 1.7;
-      }
+    .stats { padding: clamp(3rem, 5vw, 4.5rem) 0; background: #fff; }
+    .stats h2 { font-size: clamp(1.65rem, 2.2vw, 2.1rem); margin: 0 0 0.5rem; text-align: center; }
+    .stats > .container > .intro { text-align: center; color: var(--muted); max-width: 52ch; margin: 0 auto 2rem; }
+    .stat-grid { display: grid; gap: 1rem; }
+    @media (min-width: 768px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
+    .stat-card { border: 1px solid var(--line); border-radius: 12px; padding: 1.35rem; text-align: center; }
+    .stat-card strong { font-family: "PerfectlyNineties", serif; font-size: clamp(1.65rem, 2.5vw, 2rem); display: block; margin-bottom: 0.35rem; }
+    .stat-card span { font-size: 0.85rem; color: var(--muted); line-height: 1.45; display: block; }
+    blockquote.quote-feature { margin: 2rem auto 0; max-width: 40rem; border-left: 3px solid var(--accent); padding: 0.25rem 0 0.25rem 1.25rem; font-family: "PerfectlyNineties", Georgia, serif; font-style: italic; font-size: 1.1rem; line-height: 1.45; color: var(--ink); }
+    blockquote.quote-feature footer { margin-top: 0.75rem; font-style: normal; font-family: "NeueHaasDisplay", sans-serif; font-size: 0.85rem; color: var(--muted); }
 
-      /* TESTIMONIALS */
-      .testimonials {
-        padding: 80px 48px;
-        background: #fff;
-      }
-      .test-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-      .test-inner .label {
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #e8407a;
-        margin-bottom: 16px;
-        text-align: center;
-      }
-      .test-inner h2 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(26px, 3vw, 38px);
-        text-align: center;
-        margin-bottom: 48px;
-      }
-      .test-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-      }
-      .test-card {
-        background: linear-gradient(145deg, #fdf5ff, #fff5f9);
-        border: 1px solid rgba(107, 63, 160, 0.1);
-        border-radius: 20px;
-        padding: 32px 28px;
-      }
-      .test-stars {
-        color: #f5c842;
-        font-size: 16px;
-        margin-bottom: 16px;
-      }
-      .test-card blockquote {
-        font-size: 15px;
-        line-height: 1.7;
-        color: #2e1f4a;
-        font-style: italic;
-        margin-bottom: 20px;
-      }
-      .test-author {
-        font-size: 14px;
-        font-weight: 600;
-        color: #6b3fa0;
-      }
-      .test-meta {
-        font-size: 13px;
-        color: #888;
-      }
+    .about { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--surface); }
+    .about h2 { font-size: clamp(1.65rem, 2.2vw, 2.1rem); margin: 0 0 1rem; }
+    .about p { color: var(--muted); max-width: 58ch; margin: 0 0 1rem; }
+    .proof-bar { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+    .proof-bar img { height: 40px; width: auto; opacity: 0.88; }
+    .legal-note { font-size: 0.8rem; color: var(--muted); margin-top: 1.25rem; max-width: 65ch; line-height: 1.5; }
 
-      /* AWARDS */
-      .awards {
-        padding: 48px;
-        background: var(--nova-dark);
-        text-align: center;
-      }
-      .awards p {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 13px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        margin-bottom: 28px;
-      }
-      .awards-logos {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 32px;
-        flex-wrap: wrap;
-      }
-      .awards-logos img {
-        height: 60px;
-        object-fit: contain;
-        opacity: 0.85;
-        filter: brightness(1.2);
-      }
+    .faq { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+    .faq h2 { font-size: clamp(1.65rem, 2.2vw, 2.1rem); margin: 0 0 0.5rem; }
+    .faq .faq-intro { color: var(--muted); margin: 0 0 1.5rem; max-width: 52ch; }
+    .faq details { border: 1px solid var(--line); border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 0.65rem; background: #fff; }
+    .faq summary { font-weight: 500; cursor: pointer; list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq details p { margin: 0.75rem 0 0; color: var(--muted); font-size: 0.92rem; }
 
-      /* FOUNDER QUOTE */
-      .founder {
-        padding: 80px 48px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .founder-card {
-        background: linear-gradient(145deg, #f8f0ff, #fff5f9);
-        border-radius: 24px;
-        padding: 48px;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 40px;
-        align-items: start;
-      }
-      .founder-card img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid rgba(107, 63, 160, 0.3);
-      }
-      .founder-card blockquote {
-        font-family: "Playfair Display", serif;
-        font-size: 20px;
-        font-style: italic;
-        line-height: 1.7;
-        color: #1a1229;
-        margin-bottom: 20px;
-      }
-      .founder-card .name {
-        font-weight: 700;
-        font-size: 15px;
-        color: #6b3fa0;
-      }
-      .founder-card .role {
-        font-size: 14px;
-        color: #888;
-      }
+    .cta-band { padding: clamp(3rem, 5vw, 4.5rem) 0; text-align: center; border-top: 1px solid var(--line); }
+    .cta-band h2 { font-size: clamp(1.6rem, 2.2vw, 2rem); margin: 0 0 0.5rem; }
+    .cta-band p { color: var(--muted); margin: 0 auto 1.5rem; max-width: 44ch; }
 
-      /* FINAL CTA */
-      .final-cta {
-        padding: 96px 48px;
-        background: var(--grad);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .final-cta::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      }
-      .final-cta h2 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(30px, 4vw, 52px);
-        color: #fff;
-        margin-bottom: 20px;
-        position: relative;
-      }
-      .final-cta p {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.85);
-        margin-bottom: 40px;
-        max-width: 560px;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-      }
-      .btn-white {
-        background: #fff;
-        border: none;
-        padding: 16px 40px;
-        border-radius: 50px;
-        font-size: 16px;
-        font-weight: 700;
-        color: #6b3fa0;
-        cursor: pointer;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-        font-family: "DM Sans", sans-serif;
-        text-decoration: none;
-        display: inline-block;
-        position: relative;
-      }
-      .btn-white:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
-      }
-      .final-note {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.7);
-        margin-top: 16px;
-        position: relative;
-      }
+    footer { padding: 2rem 0; background: var(--surface); font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--line); }
+    .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+    .foot a { color: var(--ink); text-decoration: none; }
+    .foot a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header><div class="container nav">
+    <a href="#"><img src="logo/Logo.png" alt="Nova" width="130" height="36" /></a>
+    <nav class="nav-links" aria-label="Primary"><a href="#how">How it works</a><a href="#results">Results</a><a href="#about">Who stands behind Nova</a><a href="#faq">FAQ</a></nav>
+    <div class="nav-cta"><button type="button" class="link-quiet">Login</button><a class="btn btn-primary" href="#cta">Get started now</a></div>
+  </div></header>
 
-      /* FOOTER */
-      footer {
-        padding: 40px 48px;
-        background: var(--nova-dark);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-      footer img {
-        height: 32px;
-      }
-      .footer-links {
-        display: flex;
-        gap: 24px;
-      }
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 13px;
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      .footer-links a:hover {
-        color: #fff;
-      }
-      footer p.disclaimer {
-        width: 100%;
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.35);
-        line-height: 1.6;
-      }
-
-      @media (max-width: 768px) {
-        nav {
-          padding: 16px 20px;
-        }
-        .nav-links,
-        .nav-cta .btn-ghost {
-          display: none;
-        }
-        .hero,
-        .solution {
-          grid-template-columns: 1fr;
-          padding: 40px 20px;
-        }
-        .hero-img-col {
-          height: 300px;
-        }
-        .pain-grid,
-        .test-grid,
-        .steps {
-          grid-template-columns: 1fr;
-        }
-        .steps::before {
-          display: none;
-        }
-        .pain-strip,
-        .hiw,
-        .testimonials,
-        .awards,
-        .founder,
-        .final-cta {
-          padding: 56px 20px;
-        }
-        .founder-card {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-        footer {
-          padding: 32px 20px;
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <a class="nav-logo" href="#"><img src="Logo.png" alt="Nova" /></a>
-      <ul class="nav-links">
-        <li><a href="#">How Nova works</a></li>
-        <li><a href="#">Our results</a></li>
-        <li><a href="#">About us</a></li>
-        <li><a href="#">FAQs</a></li>
-      </ul>
-      <div class="nav-cta">
-        <button class="btn-ghost">Log in</button>
-        <button class="btn-primary">Get started</button>
-      </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-badge">
-          ⚡ <span>Free personalised recommendation</span> — takes 5 minutes
-        </div>
-        <h1 class="hero-head">
-          Divorce is hard.<br /><em>Figuring out<br />where to start</em
-          ><br />shouldn't be.
-        </h1>
-        <p class="hero-sub">
-          Most people waste months — and thousands of pounds — choosing the
-          wrong approach at the start. Nova helps you understand
-          <strong>all your options</strong> and recommends the best path for
-          <strong>your situation</strong>.
-        </p>
-        <div class="hero-ctas">
-          <a href="#" class="btn-large">Get my free recommendation →</a>
-        </div>
-        <p class="hero-note">🔒 Secure and private · 5 minutes</p>
-      </div>
-      <div class="hero-img-col">
-        <img
-          src="pinkdoorbackground.webp"
-          alt="A new beginning"
-          class="door-bg"
-        />
-        <img src="doorgirl.webp" alt="Moving forward" class="person" />
-      </div>
-    </section>
-
-    <!-- PAIN STRIP -->
-    <section class="pain-strip">
-      <h2>You're probably feeling overwhelmed right now</h2>
-      <p>
-        And that's completely understandable. But the decisions you make in
-        these first weeks will shape everything that follows.
-      </p>
-      <div class="pain-grid">
-        <div class="pain-card">
-          <div class="icon">😰</div>
-          <h3>You don't know where to start</h3>
-          <p>
-            Googling divorce gets you 10 million results and none of them are
-            tailored to your actual situation.
-          </p>
-        </div>
-        <div class="pain-card">
-          <div class="icon">💸</div>
-          <h3>Lawyers cost a fortune — before you even start</h3>
-          <p>
-            Traditional solicitors charge hundreds of pounds just for an initial
-            consultation. And then charge more to tell you your options.
-          </p>
-        </div>
-        <div class="pain-card">
-          <div class="icon">⏳</div>
-          <h3>Every month of delay makes it worse</h3>
-          <p>
-            Uncertainty breeds conflict. The longer you wait without a clear
-            plan, the more stressful and expensive it becomes.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SOLUTION -->
-    <section class="solution">
+  <section class="hero" aria-labelledby="h1">
+    <div class="container hero-grid">
       <div>
-        <div class="solution-label">The Nova Approach</div>
-        <h2>Expert guidance, available right now — for free</h2>
-        <p>
-          Nova combines advanced AI with award-winning family law professionals
-          to help you understand your options and recommend the best approach —
-          without the hefty price tag.
-        </p>
-        <ul class="solution-list">
-          <li>Answer a few questions about your situation</li>
-          <li>Receive a free personalised recommendation in minutes</li>
-          <li>Get connected to the right expert at the right time</li>
-          <li>Avoid paying for advice you don't need yet</li>
-          <li>Make informed decisions from day one</li>
-        </ul>
-        <br />
-        <a
-          href="#"
-          class="btn-large"
-          style="font-size: 15px; padding: 14px 32px"
-          >Start for free →</a
-        >
-      </div>
-      <div class="solution-visual">
-        <div class="sol-stat">
-          <div class="num">94%</div>
-          <div class="label">
-            of clients preferred briefing their family professional online
-            through Nova rather than in a traditional face-to-face meeting
-          </div>
+        <p style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin:0 0 1rem;">Divorce &amp; separation · England &amp; Wales</p>
+        <h1 id="h1">Lighting your path through <em>divorce and separation</em></h1>
+        <p class="hero-lead">Nova combines AI with family law professionals to explain your options, guide you step by step, and connect you with the right expert at the right time. You begin with a free, personalised recommendation.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cta" style="background:#fff;color:var(--ink);">Get started now</a>
+          <a class="btn btn-secondary" href="#how" style="background:transparent;color:#fff;border-color:rgba(255,255,255,0.35);">See how it works</a>
         </div>
-        <div class="sol-stat">
-          <div class="num">20k+</div>
-          <div class="label">
-            people have used Nova to make sense of life's difficult moments
-          </div>
-        </div>
-        <div class="sol-stat">
-          <div class="num">9/10</div>
-          <div class="label">
-            Nova users said they would recommend us to friends and family
-          </div>
-        </div>
+        <p class="hero-note">Takes 5–10 minutes. No obligation. Secure and private. You’ll answer thoughtful questions — then see what we recommend and what happens next.</p>
       </div>
-    </section>
+      <div class="hero-visual"><img src="hero/family.webp" alt="" width="700" height="900" style="width:100%;max-height:560px;object-fit:cover;object-position:center top;" /></div>
+    </div>
+  </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="hiw">
-      <div class="hiw-inner">
-        <div class="label">How It Works</div>
-        <h2>Your personalised plan in 3 steps</h2>
-        <p class="sub">No jargon. No commitment. Just clarity.</p>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">1</div>
-            <h3>Answer a few questions</h3>
-            <p>
-              Tell Nova about your situation — children, finances, property,
-              relationship status. Takes about 5 minutes. Completely secure and
-              private.
-            </p>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <h3>Get your free recommendation</h3>
-            <p>
-              Nova's intelligent algorithm analyses thousands of similar cases
-              and recommends the best approach for your specific circumstances.
-            </p>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <h3>Connect with the right expert</h3>
-            <p>
-              When you're ready, Nova connects you with a fully vetted,
-              regulated family law professional — matched to your needs.
-            </p>
-          </div>
-        </div>
+  <section class="relief" id="how">
+    <div class="container">
+      <h2>Choose Nova for expert, regulated and personalised guidance</h2>
+      <p class="intro">Nova is built for separation and divorce: an integrated platform that combines advanced AI with trusted family lawyers and dispute-resolution experts — so you’re supported by people, with software that saves time and reduces stress.</p>
+      <div class="relief-grid">
+        <div class="relief-card"><h3>Support at every step</h3><p>Strong expert advice where it matters, at a clearer price where possible — and routes that aim to avoid unnecessary court cost and pain when that’s realistic for you.</p></div>
+        <div class="relief-card"><h3>Matched professionals, briefed before you meet</h3><p>When it’s appropriate, we can introduce a regulated lawyer or other family professional who is briefed by your Nova journey — saving time, money, and stress in early conversations.</p></div>
+        <div class="relief-card"><h3>Clarity and confidence</h3><p>AI tailored to your situation, with human experts when you need them — so you understand not just <em>what</em> we suggest, but <em>why</em>.</p></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials">
-      <div class="test-inner">
-        <div class="label">Real People, Real Results</div>
-        <h2>Thousands have found their way forward with Nova</h2>
-        <div class="test-grid">
-          <div class="test-card">
-            <div class="test-stars">★★★★★</div>
-            <blockquote>
-              "Clear and easy to follow. I understood why that approach was
-              recommended — something I never got from Googling for hours."
-            </blockquote>
-            <div class="test-author">Brian D.</div>
-            <div class="test-meta">UK</div>
-          </div>
-          <div class="test-card">
-            <div class="test-stars">★★★★★</div>
-            <blockquote>
-              "I was dreading this process but Nova made me feel like I had a
-              clear plan from day one. Worth every penny — and it was free to
-              start."
-            </blockquote>
-            <div class="test-author">Sarah M.</div>
-            <div class="test-meta">London, UK</div>
-          </div>
-          <div class="test-card">
-            <div class="test-stars">★★★★★</div>
-            <blockquote>
-              "The recommendation saved me from going straight to court. I
-              hadn't even realised there were better options available to us."
-            </blockquote>
-            <div class="test-author">James T.</div>
-            <div class="test-meta">Manchester, UK</div>
-          </div>
-        </div>
+  <section class="split">
+    <div class="container split-inner">
+      <div class="split-img"><img src="supports/alan_quote_desk.png" alt="Regulated family law expertise behind Nova" width="1200" height="500" style="width:100%;max-height:340px;object-fit:cover;" loading="lazy" /></div>
+      <div>
+        <h2>People-led, software-supported</h2>
+        <p>Behind the product sits a multi-disciplinary team — solicitors, mediators, and therapists — with a client-centred approach. You’re not buying a faceless app; you’re opening a structured path that respects how serious this moment is.</p>
+        <a class="btn btn-primary" href="#cta">Get started now</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- AWARDS -->
-    <section class="awards">
-      <p>Recognised by the industry's most respected bodies</p>
-      <div class="awards-logos">
-        <img src="achievement1.png" alt="The Times Best Law Firms 2026" />
-        <img src="achievement2.jpg" alt="Legal 500 Top Tier Firm 2026" />
-        <img src="achievement5.jpg" alt="Chambers Top Ranked UK 2026" />
-        <img src="achievement9.png" alt="Family Law Awards 2025 Finalist" />
-        <img src="achievement7.png" alt="KTP Best of the Best" />
+  <section class="stats" id="results">
+    <div class="container">
+      <h2>Choose Nova for proven results, trusted by thousands</h2>
+      <p class="intro">Real outcomes from people who used Nova in difficult moments.</p>
+      <div class="stat-grid" role="list">
+        <div class="stat-card" role="listitem"><strong>94%</strong><span>of clients preferred briefing their professional online through Nova rather than a traditional face-to-face first meeting.</span></div>
+        <div class="stat-card" role="listitem"><strong>20k+</strong><span>people have used Nova when separation or divorce felt overwhelming.</span></div>
+        <div class="stat-card" role="listitem"><strong>9/10</strong><span>Nova clients said they would recommend Nova to family and friends.</span></div>
       </div>
-    </section>
+      <blockquote class="quote-feature">The process was clear and easy to follow, and I understood why the approach was recommended.<footer>— Brian B, UK</footer></blockquote>
+    </div>
+  </section>
 
-    <!-- FOUNDER QUOTE -->
-    <section class="founder">
-      <div class="founder-card">
-        <img src="alan_quote_desk.png" alt="Alan Larkin" />
-        <div>
-          <blockquote>
-            "The path a couple chooses at the start of their separation or
-            divorce is the biggest factor in how positive their outcome will be.
-            Nova gives you free expert, emotionally-intelligent guidance right
-            now when you need it most — saving you hundreds of pounds, hours of
-            time and lots of worry."
-          </blockquote>
-          <div class="name">Alan Larkin</div>
-          <div class="role">
-            Nova Founder &amp; Chief Product Officer · Family Lawyer for 30+
-            years
-          </div>
-        </div>
+  <section class="about" id="about">
+    <div class="container">
+      <h2>Choose Nova for insightful support when you need it most</h2>
+      <p>You have access to experts from <strong>Family Law Partners</strong> — named among <em>The Times</em> Law Firms of the Year 2026 — focused on strong advice at accessible prices. The wider team includes lawyers, mediators, and therapists, working to resolve matters without court where that’s right for you.</p>
+      <p>We use regulated experts so you have credible options on your journey. Nova’s algorithms have been recognised with an Innovate UK “Best of the Best” award.</p>
+      <div class="proof-bar" aria-label="Recognition">
+        <img src="awards/achievement1.png" alt="" width="120" height="50" loading="lazy" />
+        <img src="awards/achievement5.jpg" alt="" width="120" height="50" loading="lazy" />
+        <img src="awards/achievement7.png" alt="" width="120" height="50" loading="lazy" />
       </div>
-    </section>
+      <p class="legal-note"><strong>Important:</strong> Nova has an ownership relationship with Family Law Partners (SRA-regulated solicitors). You are <em>not</em> required to instruct that firm — you may choose any solicitor.</p>
+    </div>
+  </section>
 
-    <!-- FINAL CTA -->
-    <section class="final-cta">
-      <h2>Take the first step today</h2>
-      <p>
-        Get your free, personalised recommendation in 5 minutes. No commitment.
-        No payment. Just clarity.
-      </p>
-      <a href="#" class="btn-white">Get started for free →</a>
-      <p class="final-note">
-        🔒 Secure · Private · Regulated by the Solicitors Regulation Authority
-      </p>
-    </section>
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2>Frequently asked questions</h2>
+      <p class="faq-intro">Every situation is unique. These short answers cover what people ask most — tap a question to read more.</p>
+      <details><summary>What is Nova, and who is it for?</summary><p>Nova is for adults in England and Wales facing separation or divorce, or supporting someone who is. We combine technology with regulated family-law and dispute-resolution expertise to help you understand options and next steps.</p></details>
+      <details><summary>Is Nova a law firm? Will I get legal advice?</summary><p>Nova is <strong>not</strong> a law firm. Depending on your answers, we may point you toward mediation, DIY routes, consultants, or regulated legal advice. Where legal advice is appropriate, it comes from qualified professionals — not from an anonymous chatbot.</p></details>
+      <details><summary>What does “Get started now” do?</summary><p>You’ll begin a secure questionnaire (about 5–10 minutes). From that, you receive a free, personalised recommendation and a clear view of what could happen next — before you commit to any paid professional work.</p></details>
+      <details><summary>What does it cost?</summary><p>The technology path to your initial recommendation is free. If you choose to work with a professional, their fees apply separately. A Strategic Advice Consultation is around £299 including VAT (about one hour), with a Recommendations &amp; Next Steps letter within two working days.</p></details>
+      <details><summary>What are Nova Navigators?</summary><p>Navigators help you use the platform and understand what comes next. They are not a substitute for legal advice from a regulated lawyer when you need it.</p></details>
+    </div>
+  </section>
 
-    <footer>
-      <img src="Logo.png" alt="Nova" />
-      <div class="footer-links">
-        <a href="#">User Agreement</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <p class="disclaimer">
-        © Nova Law Testing Limited, a limited company incorporated in England &
-        Wales. We have an ownership relationship with Family Law Partners, a
-        firm of solicitors regulated by the Solicitors Regulation Authority. You
-        are not required to use this firm and may instruct any solicitor of your
-        choosing.
-      </p>
-    </footer>
-  </body>
+  <section class="cta-band" id="cta">
+    <div class="container">
+      <h2>Begin with a free, personalised recommendation</h2>
+      <p>Open the questionnaire when you’re ready — same tone as the rest of Nova: calm, direct, and respectful of what you’re going through.</p>
+      <a class="btn btn-primary" href="#cta">Get started now</a>
+      <p style="margin:0.75rem 0 0;font-size:0.85rem;color:var(--muted);">5–10 minutes · No obligation · Secure and private</p>
+    </div>
+  </section>
+
+  <footer><div class="container foot">
+    <p style="margin:0;max-width:42ch;">Nova is not a law firm. Professional services are provided by regulated firms where you instruct them. England &amp; Wales.</p>
+    <div><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a>
+    </div>
+  </div></footer>
+</body>
 </html>

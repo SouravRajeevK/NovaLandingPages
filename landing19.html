@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Nova – How It Works: The Technology &amp; Expertise Behind Your
+      Recommendation
+    </title>
+    
+    <style>
+    @font-face { font-family: "NeueHaasDisplay"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "NeueHaasDisplay"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-display: swap; }
+    @font-face { font-family: "PerfectlyNineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "PerfectlyNineties"; src: url("fonts/PerfectlyNineties-Italic.woff") format("woff"); font-weight: 400; font-style: italic; font-display: swap; }
+
+      :root {
+        --purple: #6b3fa0;
+        --pink: #e8407a;
+        --yellow: #f5c842;
+        --dark: #0c0c14;
+        --bg: #f8f8fc;
+        --border: #e4e4f0;
+        --code-bg: #1a1a2e;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "NeueHaasDisplay", system-ui, sans-serif;
+        background: #fff;
+        color: var(--dark);
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* NAV */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 56px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      nav img {
+        height: 32px;
+      }
+      .nav-r {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .nav-r a {
+        font-size: 14px;
+        color: #888;
+        font-weight: 500;
+      }
+      .nav-btn {
+        background: linear-gradient(135deg, var(--purple), var(--pink));
+        color: #fff;
+        border: none;
+        padding: 9px 22px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: "NeueHaasDisplay", system-ui, sans-serif;
+      }
+
+      /* HERO */
+      .hero {
+        padding: 80px 56px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 55% 45%;
+        gap: 56px;
+        align-items: center;
+      }
+      .tag-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        display: inline-block;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 4px 10px;
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+        font-size: 11px;
+        color: #888;
+      }
+      .tag.active {
+        border-color: rgba(107, 63, 160, 0.4);
+        color: var(--purple);
+        background: rgba(107, 63, 160, 0.06);
+      }
+      h1 {
+        font-size: clamp(30px, 3.8vw, 48px);
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+      h1 span {
+        background: linear-gradient(135deg, var(--purple), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-p {
+        font-size: 16px;
+        line-height: 1.75;
+        color: #555;
+        margin-bottom: 28px;
+      }
+      .cta-main {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--purple), var(--pink));
+        color: #fff;
+        padding: 14px 32px;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .cta-main:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(107, 63, 160, 0.35);
+      }
+      .hero-note {
+        font-size: 12px;
+        color: #bbb;
+        margin-top: 10px;
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+      }
+      .hero-right {
+      }
+      .process-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      }
+      .process-card .pc-title {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #bbb;
+        margin-bottom: 20px;
+      }
+      .pc-step {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--bg);
+      }
+      .pc-step:last-child {
+        border-bottom: none;
+      }
+      .pc-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--purple), var(--pink));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+      .pc-text h4 {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+      .pc-text span {
+        font-size: 12px;
+        color: #aaa;
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+      }
+
+      /* HOW IT WORKS DEEP DIVE */
+      .hiw-deep {
+        padding: 96px 56px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+      }
+      .hiw-deep h2 {
+        font-size: clamp(26px, 3vw, 38px);
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .hiw-deep .sub {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 56px;
+      }
+      .phases {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .phase {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 48px;
+        padding: 48px 0;
+        border-bottom: 1px solid var(--border);
+        align-items: start;
+      }
+      .phase:last-child {
+        border-bottom: none;
+      }
+      .phase-meta .phase-n {
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+        font-size: 12px;
+        color: #bbb;
+        margin-bottom: 8px;
+      }
+      .phase-meta h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .phase-meta .dur {
+        display: inline-block;
+        background: rgba(107, 63, 160, 0.08);
+        color: var(--purple);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+      }
+      .phase-content p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 20px;
+      }
+      .feature-pills {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .fpill {
+        display: inline-block;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 4px 12px;
+        font-size: 12px;
+        color: #666;
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+      }
+      .fpill.highlight {
+        background: rgba(107, 63, 160, 0.08);
+        border-color: rgba(107, 63, 160, 0.2);
+        color: var(--purple);
+      }
+
+      /* TECHNOLOGY */
+      .tech {
+        padding: 96px 56px;
+        background: var(--code-bg);
+      }
+      .tech-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .tech .section-label {
+        color: #a78bfa;
+      }
+      .tech h2 {
+        font-size: clamp(26px, 3vw, 38px);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
+      }
+      .tech .sub {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 56px;
+      }
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .tech-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 32px;
+      }
+      .tc-label {
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+        font-size: 11px;
+        color: var(--yellow);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .tech-card h3 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .tech-card p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* DATA TABLE */
+      .data-section {
+        padding: 96px 56px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .data-section h2 {
+        font-size: clamp(24px, 3vw, 36px);
+        font-weight: 700;
+        margin-bottom: 40px;
+      }
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .data-table th {
+        text-align: left;
+        padding: 14px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #aaa;
+        border-bottom: 2px solid var(--border);
+      }
+      .data-table td {
+        padding: 16px 20px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: middle;
+      }
+      .data-table tr:last-child td {
+        border-bottom: none;
+      }
+      .data-table tr:hover td {
+        background: var(--bg);
+      }
+      .badge-green {
+        display: inline-block;
+        background: rgba(34, 197, 94, 0.1);
+        color: #16a34a;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 4px;
+      }
+      .badge-purple {
+        display: inline-block;
+        background: rgba(107, 63, 160, 0.1);
+        color: var(--purple);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 4px;
+      }
+      .mono {
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+        font-size: 12px;
+        color: #888;
+      }
+
+      /* TRUST SIGNALS */
+      .trust {
+        padding: 80px 56px;
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+      }
+      .trust-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .trust h2 {
+        font-size: clamp(24px, 3vw, 36px);
+        font-weight: 700;
+        margin-bottom: 48px;
+        text-align: center;
+      }
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+      .trust-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 24px;
+        text-align: center;
+      }
+      .trust-card img {
+        height: 64px;
+        object-fit: contain;
+        margin-bottom: 12px;
+      }
+      .trust-card p {
+        font-size: 13px;
+        color: #888;
+        line-height: 1.5;
+      }
+
+      /* STATS */
+      .stats {
+        padding: 80px 56px;
+        background: var(--dark);
+      }
+      .stats-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .stat-box {
+        background: var(--dark);
+        padding: 48px 32px;
+        text-align: center;
+      }
+      .stat-n {
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+        font-size: 48px;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--yellow), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+      }
+      .stat-l {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 10px;
+        line-height: 1.5;
+      }
+
+      /* CTA */
+      .fcta {
+        padding: 96px 56px;
+        text-align: center;
+        border-top: 1px solid var(--border);
+      }
+      .fcta h2 {
+        font-size: clamp(28px, 4vw, 48px);
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .fcta p {
+        font-size: 17px;
+        color: #666;
+        margin-bottom: 36px;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .fcta-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--purple), var(--pink));
+        color: #fff;
+        padding: 16px 44px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 700;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .fcta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(107, 63, 160, 0.4);
+      }
+      .fcta-note {
+        font-size: 12px;
+        color: #bbb;
+        margin-top: 14px;
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+      }
+
+      footer {
+        padding: 40px 56px;
+        background: var(--dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      footer img {
+        height: 28px;
+      }
+      .fl a {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 13px;
+        margin-right: 20px;
+      }
+      footer .disc {
+        width: 100%;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.2);
+        line-height: 1.6;
+        margin-top: 8px;
+      }
+
+      @media (max-width: 768px) {
+        nav,
+        .hero,
+        .hiw-deep,
+        .tech,
+        .data-section,
+        .trust,
+        .stats,
+        .fcta,
+        footer {
+          padding: 56px 20px;
+        }
+        .hero-inner,
+        .phase,
+        .tech-grid,
+        .trust-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-inner {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        footer {
+          padding: 32px 20px;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <img src="logo/Logo.png" alt="Nova" />
+      <div class="nav-r">
+        <a href="#">How it works</a>
+        <a href="#">Our results</a>
+        <a href="#">About us</a>
+        <a href="#">FAQs</a>
+        <a href="#">For professionals</a>
+        <button class="nav-btn">Get started</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="tag-row">
+            <div class="tag active">AI + Expert Guidance</div>
+            <div class="tag">Regulated</div>
+            <div class="tag">SRA</div>
+            <div class="tag">Free to start</div>
+          </div>
+          <h1>Advanced AI meets<br /><span>30 years of expertise</span></h1>
+          <p class="hero-p">
+            Nova's recommendation engine combines cutting-edge AI with the
+            embedded knowledge of Family Law Partners — one of the UK's most
+            decorated family law firms. The result: expert guidance,
+            personalised to your situation, available instantly, free of charge.
+          </p>
+          <a href="#" class="cta-main">Get my free recommendation →</a>
+          <p class="hero-note">
+            // FREE · PRIVATE · 5_MINUTES · NO_ACCOUNT_REQUIRED
+          </p>
+        </div>
+        <div class="hero-right">
+          <div class="process-card">
+            <div class="pc-title">Assessment Pipeline</div>
+            <div class="pc-step">
+              <div class="pc-icon">📋</div>
+              <div class="pc-text">
+                <h4>Intake assessment</h4>
+                <span>~3 min · 12–15 questions</span>
+              </div>
+            </div>
+            <div class="pc-step">
+              <div class="pc-icon">🔍</div>
+              <div class="pc-text">
+                <h4>Situational analysis</h4>
+                <span>Automated · Real-time</span>
+              </div>
+            </div>
+            <div class="pc-step">
+              <div class="pc-icon">⚖️</div>
+              <div class="pc-text">
+                <h4>Legal pathway mapping</h4>
+                <span>6 pathways evaluated</span>
+              </div>
+            </div>
+            <div class="pc-step">
+              <div class="pc-icon">📊</div>
+              <div class="pc-text">
+                <h4>Recommendation output</h4>
+                <span>Personalised · Explained</span>
+              </div>
+            </div>
+            <div class="pc-step">
+              <div class="pc-icon">🤝</div>
+              <div class="pc-text">
+                <h4>Expert matching (optional)</h4>
+                <span>When you're ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEEP DIVE HOW IT WORKS -->
+    <section class="hiw-deep">
+      <span class="section-label">Process Deep-Dive</span>
+      <h2>How Nova's recommendation engine works</h2>
+      <p class="sub">
+        A transparent look at what happens when you complete the Nova
+        assessment.
+      </p>
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-meta">
+            <div class="phase-n">PHASE_01</div>
+            <h3>Structured intake</h3>
+            <span class="dur">~5 minutes</span>
+          </div>
+          <div class="phase-content">
+            <p>
+              The assessment gathers structured data about your situation across
+              four key dimensions: relationship and legal status, financial
+              situation, property arrangements, and children/dependants. Each
+              question is calibrated to capture the information required for an
+              accurate recommendation without unnecessary burden.
+            </p>
+            <div class="feature-pills">
+              <span class="fpill highlight">Adaptive questioning</span>
+              <span class="fpill highlight">End-to-end encryption</span>
+              <span class="fpill">No account required</span>
+              <span class="fpill">GDPR compliant</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-meta">
+            <div class="phase-n">PHASE_02</div>
+            <h3>Situational analysis</h3>
+            <span class="dur">Automated</span>
+          </div>
+          <div class="phase-content">
+            <p>
+              Nova's engine processes your responses against a comprehensive
+              model of UK family law pathways, informed by 30+ years of Family
+              Law Partners' case knowledge and continuously refined against
+              outcomes data. The model identifies which of the six primary
+              dispute resolution pathways — from direct agreement to litigation
+              — are viable for your situation.
+            </p>
+            <div class="feature-pills">
+              <span class="fpill highlight">6 pathways evaluated</span>
+              <span class="fpill highlight">Outcome-weighted model</span>
+              <span class="fpill">Real-time processing</span>
+              <span class="fpill">30+ years of case data</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-meta">
+            <div class="phase-n">PHASE_03</div>
+            <h3>Recommendation output</h3>
+            <span class="dur">Instant</span>
+          </div>
+          <div class="phase-content">
+            <p>
+              Your recommendation is presented with full explanation — not just
+              a pathway name, but the reasoning behind it, what it involves,
+              what it typically costs, how long it takes, and what outcomes to
+              expect. This transparency enables you to make a genuinely informed
+              decision rather than simply following a black-box output.
+            </p>
+            <div class="feature-pills">
+              <span class="fpill highlight">Explainable outputs</span>
+              <span class="fpill highlight">Cost estimates included</span>
+              <span class="fpill">Timeline projections</span>
+              <span class="fpill">Alternative options shown</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-meta">
+            <div class="phase-n">PHASE_04</div>
+            <h3>Expert connection (optional)</h3>
+            <span class="dur">When you're ready</span>
+          </div>
+          <div class="phase-content">
+            <p>
+              When you choose to engage an expert, Nova's matching algorithm
+              identifies the most appropriate professional within Family Law
+              Partners based on case type, complexity, location preference, and
+              communication style. The professional receives a comprehensive
+              briefing prior to your first meeting, eliminating the need to
+              repeat your story and reducing the time — and cost — of initial
+              consultations.
+            </p>
+            <div class="feature-pills">
+              <span class="fpill highlight">Expert pre-briefing</span>
+              <span class="fpill highlight">Skills-based matching</span>
+              <span class="fpill">SRA regulated</span>
+              <span class="fpill">No obligation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section class="tech">
+      <div class="tech-inner">
+        <span class="section-label">Technology &amp; Data</span>
+        <h2>Built on real expertise, not generic AI</h2>
+        <p class="sub">
+          Nova isn't a general-purpose chatbot applied to family law. It's a
+          purpose-built system, trained and validated on decades of real case
+          expertise.
+        </p>
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tc-label">Knowledge_Base</div>
+            <h3>30+ years of family law expertise embedded</h3>
+            <p>
+              Family Law Partners' case knowledge, successful pathway decisions,
+              and outcome data form the foundation of Nova's recommendation
+              model — not general legal information.
+            </p>
+          </div>
+          <div class="tech-card">
+            <div class="tc-label">Validation</div>
+            <h3>Continuously tested against outcomes</h3>
+            <p>
+              Nova's model is actively monitored and refined by family law
+              experts to ensure recommendation accuracy and alignment with
+              current UK family law practice.
+            </p>
+          </div>
+          <div class="tech-card">
+            <div class="tc-label">Privacy_Architecture</div>
+            <h3>Privacy by design</h3>
+            <p>
+              Assessment data is encrypted end-to-end. No account is required to
+              start. Data retention is minimal, purpose-limited, and GDPR
+              compliant at every step.
+            </p>
+          </div>
+          <div class="tech-card">
+            <div class="tc-label">Regulatory_Status</div>
+            <h3>Fully regulated and accountable</h3>
+            <p>
+              Nova operates in partnership with Family Law Partners, a firm
+              regulated by the Solicitors Regulation Authority. Every
+              recommendation sits within a regulated legal framework.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PATHWAY TABLE -->
+    <section class="data-section">
+      <span class="section-label">Pathway Overview</span>
+      <h2>The six pathways Nova evaluates for your situation</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Pathway</th>
+            <th>Best for</th>
+            <th>Typical cost</th>
+            <th>Typical timeline</th>
+            <th>Court involvement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Direct agreement</strong></td>
+            <td>Low-conflict, cooperative couples</td>
+            <td class="mono">£500–2,000</td>
+            <td class="mono">1–3 months</td>
+            <td><span class="badge-green">Minimal</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mediation</strong></td>
+            <td>Moderate disagreements on specific issues</td>
+            <td class="mono">£1,500–4,000</td>
+            <td class="mono">2–6 months</td>
+            <td><span class="badge-green">None</span></td>
+          </tr>
+          <tr>
+            <td><strong>Collaborative law</strong></td>
+            <td>Complex situations, preserving relationship</td>
+            <td class="mono">£5,000–15,000</td>
+            <td class="mono">3–9 months</td>
+            <td><span class="badge-green">None</span></td>
+          </tr>
+          <tr>
+            <td><strong>Solicitor negotiation</strong></td>
+            <td>High-value or contentious assets</td>
+            <td class="mono">£5,000–20,000</td>
+            <td class="mono">3–12 months</td>
+            <td><span class="badge-purple">Possible</span></td>
+          </tr>
+          <tr>
+            <td><strong>Arbitration</strong></td>
+            <td>Specific disputed issues requiring a decision</td>
+            <td class="mono">£4,000–12,000</td>
+            <td class="mono">2–6 months</td>
+            <td><span class="badge-green">Minimal</span></td>
+          </tr>
+          <tr>
+            <td><strong>Court proceedings</strong></td>
+            <td>Highly contested, no agreement possible</td>
+            <td class="mono">£10,000–50,000+</td>
+            <td class="mono">12–36 months</td>
+            <td>
+              <span
+                style="
+                  display: inline-block;
+                  background: rgba(239, 68, 68, 0.1);
+                  color: #dc2626;
+                  font-size: 12px;
+                  font-weight: 600;
+                  padding: 3px 10px;
+                  border-radius: 4px;
+                "
+                >Full</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- TRUST SIGNALS -->
+    <section class="trust">
+      <div class="trust-inner">
+        <h2>Trusted by individuals, recognised by the industry</h2>
+        <div class="trust-grid">
+          <div class="trust-card">
+            <img src="awards/achievement1.png" alt="Times Best Law Firms 2026" />
+            <p>Times Best Law Firms 2026</p>
+          </div>
+          <div class="trust-card">
+            <img src="awards/achievement2.jpg" alt="Legal 500 Top Tier 2026" />
+            <p>Legal 500 Top Tier UK 2026</p>
+          </div>
+          <div class="trust-card">
+            <img src="awards/achievement5.jpg" alt="Chambers Top Ranked 2026" />
+            <p>Chambers Top Ranked UK 2026</p>
+          </div>
+          <div class="trust-card">
+            <img src="awards/achievement9.png" alt="Family Law Awards 2025" />
+            <p>Family Law Awards Finalist 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="stats-inner">
+        <div class="stat-box">
+          <div class="stat-n">94%</div>
+          <div class="stat-l">
+            preferred Nova over a face-to-face consultation
+          </div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-n">20k+</div>
+          <div class="stat-l">assessments completed across the UK</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-n">9/10</div>
+          <div class="stat-l">would recommend to friends and family</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="fcta">
+      <h2>Get your personalised recommendation</h2>
+      <p>
+        Free. Private. Expert-backed. Five minutes to a clear, explained
+        recommendation for your specific situation.
+      </p>
+      <a href="#" class="fcta-btn">Begin assessment →</a>
+      <p class="fcta-note">
+        // FREE · ENCRYPTED · SRA_REGULATED · NO_ACCOUNT · NO_PAYMENT
+      </p>
+    </section>
+
+    <footer>
+      <img src="logo/Logo.png" alt="Nova" />
+      <div class="fl">
+        <a href="#">User Agreement</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <p class="disc">
+        © Nova Law Testing Limited. We have an ownership relationship with
+        Family Law Partners, a firm of solicitors regulated by the Solicitors
+        Regulation Authority. You are not required to use this firm and may
+        instruct any solicitor of your choosing.
+      </p>
+    </footer>
+  </body>
+</html>
