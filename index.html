@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova Landing Pages - Navigation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+      .container {
+        max-width: 900px;
+        width: 100%;
+      }
+      h1 {
+        color: #fff;
+        font-size: 48px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      .subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 48px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px 28px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      }
+      .card-number {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .card-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #18102e;
+        margin-bottom: 8px;
+      }
+      .card-desc {
+        font-size: 14px;
+        color: #6a5a8a;
+        line-height: 1.6;
+      }
+      .footer {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+      }
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 36px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Nova Landing Pages</h1>
+      <p class="subtitle">Choose a landing page design to explore</p>
+
+      <div class="grid">
+        <a href="landing1.html" class="card">
+          <div class="card-number">1</div>
+          <div class="card-title">Landing Page 1</div>
+        </a>
+
+        <a href="landing2.html" class="card">
+          <div class="card-number">2</div>
+          <div class="card-title">Landing Page 2</div>
+        </a>
+
+        <a href="landing3.html" class="card">
+          <div class="card-number">3</div>
+          <div class="card-title">Landing Page 3</div>
+        </a>
+
+        <a href="landing4.html" class="card">
+          <div class="card-number">4</div>
+          <div class="card-title">Landing Page 4</div>
+        </a>
+
+        <a href="landing5.html" class="card">
+          <div class="card-number">5</div>
+          <div class="card-title">Landing Page 5</div>
+        </a>
+
+        <a href="landing6.html" class="card">
+          <div class="card-number">6</div>
+          <div class="card-title">Landing Page 6</div>
+        </a>
+
+        <a href="landing7.html" class="card">
+          <div class="card-number">7</div>
+          <div class="card-title">Landing Page 7</div>
+        </a>
+
+        <a href="landing8.html" class="card">
+          <div class="card-number">8</div>
+          <div class="card-title">Landing Page 8</div>
+        </a>
+
+        <a href="landing9.html" class="card">
+          <div class="card-number">9</div>
+          <div class="card-title">Landing Page 9</div>
+        </a>
+      </div>
+
+      <div class="footer">
+        <p>© Nova Law Testing Limited</p>
+      </div>
+    </div>
+  </body>
+</html>
