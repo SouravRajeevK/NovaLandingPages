@@ -49,6 +49,27 @@
         max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-left));
     }
 
+    .page-brand {
+      grid-column: 1 / -1;
+      display: block;
+      width: fit-content;
+      margin: 0 auto clamp(0.5rem, 2vw, 1rem);
+      text-decoration: none;
+    }
+
+    .page-brand img {
+      height: 66px;
+      width: auto;
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .page-brand {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
     .grid {
       width: 100%;
       max-width: min(1080px, 100%);
@@ -89,7 +110,13 @@
       color: var(--copy);
       text-wrap: balance;
       margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+      text-shadow: none;
+    }
+
+    @media (max-width: 767px) {
+      .copy h1 {
+        font-size: 48px;
+      }
     }
 
     .copy .lede {
@@ -209,6 +236,9 @@
 <body>
   <main class="shell">
     <div class="grid">
+      <a class="page-brand" href="index.html" aria-label="Nova home">
+        <img src="logo/Logo.png" alt="Nova" width="248" height="66" decoding="async" fetchpriority="high" />
+      </a>
       <div class="copy">
         <h1>The smartest first move in any separation</h1>
         <p class="lede">

@@ -57,12 +57,11 @@
       background: rgba(255, 255, 255, 0.92);
       border-radius: 1px;
     }
-    .ad-text {
-      font-size: clamp(0.8rem, 2.2vw, 0.95rem);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: #fff;
-      white-space: nowrap;
+    .ad-mark {
+      height: clamp(44px, 11vw, 56px);
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 10px rgba(80, 30, 0, 0.2));
     }
     .card-wrap {
       width: 100%;
@@ -299,7 +298,7 @@
   <main class="page">
     <header class="ad-label" aria-label="Sponsored content">
       <span class="ad-line" aria-hidden="true"></span>
-      <span class="ad-text">NOVALAW</span>
+      <img class="ad-mark" src="logo/Logo.png" alt="Nova" width="248" height="66" decoding="async" fetchpriority="high" />
       <span class="ad-line" aria-hidden="true"></span>
     </header>
     <div class="card-wrap">
