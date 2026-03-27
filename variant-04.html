@@ -1,524 +1,618 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>When separation feels overwhelming — Nova</title>
-  <style>
-    @font-face { font-family: "Perfectly Nineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-style: normal; font-display: swap; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>When separation feels overwhelming — Nova</title>
+    <style>
+      @font-face {
+        font-family: "Perfectly Nineties";
+        src: url("fonts/PerfectlyNineties-Regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Neue Haas Display";
+        src: url("fonts/NeueHaasDisplayRoman.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Neue Haas Display";
+        src: url("fonts/NeueHaasDisplayMediu.woff") format("woff");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
 
-    * { box-sizing: border-box; margin: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
 
-    :root {
-      --dock: calc(3.85rem + env(safe-area-inset-bottom, 0px));
-      --ink: #0f1419;
-      --ink-muted: #4a5568;
-      --cream: #faf7f2;
-      --cream-deep: #f0ebe3;
-      --hero-fade: rgba(6, 10, 18, 0.92);
-      --accent: #c9a962;
-      --card-border: rgba(15, 20, 25, 0.06);
-      --shadow-soft: 0 4px 24px rgba(15, 20, 25, 0.06);
-      --shadow-cta: 0 8px 32px rgba(6, 12, 24, 0.28);
-      --radius-pill: 999px;
-      --radius-card: 14px;
-      --radius-thumb: 12px;
-      --content-max: min(560px, 100%);
-      --section-wide: min(1060px, 100%);
-      --pad-x: clamp(1rem, 4vw, 1.75rem);
-      --pad-y: clamp(0.75rem, 2.5vw, 1.25rem);
-      --nova-dark-orange: #E8731E;
-      --nova-dark-amber: #F6CF9B;
-      --nova-active: #FFDDB3;
-      --nova-orange: #FF6A42;
-    }
-
-    @media (max-width: 767px) {
       :root {
-        --dock: calc(5.35rem + env(safe-area-inset-bottom, 0px));
+        --dock: calc(3.85rem + env(safe-area-inset-bottom, 0px));
+        --ink: #0f1419;
+        --ink-muted: #4a5568;
+        --cream: #faf7f2;
+        --cream-deep: #f0ebe3;
+        --hero-fade: rgba(6, 10, 18, 0.92);
+        --accent: #c9a962;
+        --card-border: rgba(15, 20, 25, 0.06);
+        --shadow-soft: 0 4px 24px rgba(15, 20, 25, 0.06);
+        --shadow-cta: 0 8px 32px rgba(6, 12, 24, 0.28);
+        --radius-pill: 999px;
+        --radius-card: 14px;
+        --radius-thumb: 12px;
+        --content-max: min(560px, 100%);
+        --section-wide: min(1060px, 100%);
+        --pad-x: clamp(1rem, 4vw, 1.75rem);
+        --pad-y: clamp(0.75rem, 2.5vw, 1.25rem);
+        --nova-dark-orange: #e8731e;
+        --nova-dark-amber: #f6cf9b;
+        --nova-active: #ffddb3;
+        --nova-orange: #ff6a42;
       }
-    }
 
-    html {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+      @media (max-width: 767px) {
+        :root {
+          --dock: calc(5.35rem + env(safe-area-inset-bottom, 0px));
+        }
+      }
 
-    html, body { height: 100%; }
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-    body {
-      font-family: "Neue Haas Display", system-ui, sans-serif;
-      color: var(--ink);
-      min-height: 100dvh;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background: var(--cream);
-    }
+      html,
+      body {
+        height: 100%;
+      }
 
-    @media (min-height: 640px) and (min-width: 768px) {
-      html, body { overflow: hidden; height: 100%; }
-      body { overflow-y: hidden; }
-    }
+      body {
+        font-family: "Neue Haas Display", system-ui, sans-serif;
+        color: var(--ink);
+        min-height: 100dvh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: var(--cream);
+      }
 
-    main {
-      flex: 1 1 auto;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-    }
+      @media (min-height: 640px) and (min-width: 768px) {
+        html,
+        body {
+          overflow: hidden;
+          height: 100%;
+        }
+        body {
+          overflow-y: hidden;
+        }
+      }
 
-    @media (min-height: 640px) and (min-width: 768px) {
       main {
-        max-height: calc(100dvh - var(--dock));
-        overflow: hidden;
-      }
-    }
-
-    .top {
-      position: relative;
-      flex: 0 1 auto;
-      min-height: clamp(280px, 54vh, 480px);
-      max-height: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(1.25rem, 4vw, 2.25rem) clamp(1.25rem, 6vw, 2.75rem);
-      color: var(--ink);
-    }
-
-    @media (min-width: 480px) {
-      .top { min-height: clamp(320px, 52vh, 520px); }
-    }
-
-    @media (min-height: 640px) and (min-width: 768px) {
-      .top {
-        flex: 0 0 60%;
+        flex: 1 1 auto;
         min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (min-height: 640px) and (min-width: 768px) {
+        main {
+          max-height: calc(100dvh - var(--dock));
+          overflow: hidden;
+        }
+      }
+
+      .top {
+        position: relative;
+        flex: 0 1 auto;
+        min-height: clamp(280px, 54vh, 480px);
         max-height: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(1.25rem, 4vw, 2.25rem) clamp(1.25rem, 6vw, 2.75rem);
+        color: var(--ink);
       }
-    }
 
-    .top-bg { position: absolute; inset: 0; }
-    .top-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 35%;
-    }
+      @media (min-width: 480px) {
+        .top {
+          min-height: clamp(320px, 52vh, 520px);
+        }
+      }
 
-    .top-bg::after {
-      content: "";
-      position: absolute;
-    }
+      @media (min-height: 640px) and (min-width: 768px) {
+        .top {
+          flex: 0 0 60%;
+          min-height: 0;
+          max-height: none;
+        }
+      }
 
-    .top-inner {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: var(--content-max);
-      margin-inline: auto;
-      text-align: center;
-      padding-inline: clamp(0.5rem, 2vw, 1rem);
-    }
+      .top-bg {
+        position: absolute;
+        inset: 0;
+      }
+      .top-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 35%;
+      }
 
-    .eyebrow {
-      font-size: clamp(0.65rem, 1.5vw, 0.7rem);
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(15, 20, 25, 0.55);
-      margin-bottom: 0.85rem;
-    }
+      .top-bg::after {
+        content: "";
+        position: absolute;
+      }
 
-    .logo {
-      height: 66px;
-      width: auto;
-      margin-inline: auto;
-      margin-bottom: clamp(0.75rem, 2vw, 1.1rem);
-    }
+      .top-inner {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: var(--content-max);
+        margin-inline: auto;
+        text-align: center;
+        padding-inline: clamp(0.5rem, 2vw, 1rem);
+      }
 
-    h1 {
-      font-family: "Perfectly Nineties", Georgia, serif;
-      font-weight: 400;
-      font-size: 55px;
-      line-height: 1.04;
-      letter-spacing: -0.028em;
-      margin-bottom: 0.55rem;
-      text-wrap: balance;
-      color: var(--ink);
-      text-shadow: none;
-    }
+      .eyebrow {
+        font-size: clamp(0.65rem, 1.5vw, 0.7rem);
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(15, 20, 25, 0.55);
+        margin-bottom: 0.85rem;
+      }
 
-    @media (max-width: 767px) {
+      .logo {
+        height: 66px;
+        width: auto;
+        margin-inline: auto;
+        margin-bottom: clamp(0.75rem, 2vw, 1.1rem);
+      }
+
       h1 {
-        font-size: 45px;
+        font-family: "Perfectly Nineties", Georgia, serif;
+        font-weight: 400;
+        font-size: 55px;
+        line-height: 1.04;
+        letter-spacing: -0.028em;
+        margin-bottom: 0.55rem;
+        text-wrap: balance;
+        color: var(--ink);
+        text-shadow: none;
       }
-    }
 
-    .sub {
-      font-size: 16px;
-      opacity: 1;
-      line-height: 1.55;
-      margin-inline: auto;
-      margin-bottom: 15px;
-      margin-top: 15px;
-      max-width: 40ch;
-      font-weight: 400;
-      color: var(--ink-muted);
-    }
+      @media (max-width: 767px) {
+        h1 {
+          font-size: 45px;
+        }
+      }
 
-    .sub strong { font-weight: 600; color: var(--ink); }
+      .sub {
+        font-size: 16px;
+        opacity: 1;
+        line-height: 1.55;
+        margin-inline: auto;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        max-width: 40ch;
+        font-weight: 400;
+        color: var(--ink-muted);
+      }
 
-    .cta {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.98rem 1.9rem;
-      font-weight: 600;
-      font-size: clamp(0.88rem, 2vw, 0.94rem);
-      letter-spacing: 0.045em;
-      color: #fffef9;
-      text-decoration: none;
-      text-shadow: 0 1px 1px rgba(15, 20, 25, 0.14);
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(246, 207, 155, 0.5);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 46%),
-        linear-gradient(
-          155deg,
-          var(--nova-orange) 0%,
-          #f75e32 40%,
-          var(--nova-dark-orange) 100%
-        );
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.32),
-        inset 0 -1px 0 rgba(232, 115, 30, 0.22),
-        0 10px 34px rgba(255, 106, 66, 0.38),
-        0 2px 10px rgba(15, 20, 25, 0.1);
-      transition:
-        transform 0.32s cubic-bezier(0.34, 1.15, 0.64, 1),
-        box-shadow 0.32s ease,
-        filter 0.32s ease,
-        border-color 0.32s ease,
-        background 0.32s ease;
-    }
+      .sub strong {
+        font-weight: 600;
+        color: var(--ink);
+      }
 
-    .cta:hover {
-      transform: translateY(-2px);
-      border-color: rgba(246, 207, 155, 0.9);
-      background:
-        linear-gradient(180deg, rgba(255, 221, 179, 0.38) 0%, transparent 44%),
-        linear-gradient(
-          155deg,
-          var(--nova-active) 0%,
-          var(--nova-orange) 38%,
-          var(--nova-dark-orange) 100%
-        );
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.42),
-        inset 0 -1px 0 rgba(232, 115, 30, 0.14),
-        0 16px 46px rgba(255, 106, 66, 0.5),
-        0 6px 18px rgba(232, 115, 30, 0.28),
-        0 0 0 1px rgba(255, 221, 179, 0.25);
-      filter: brightness(1.04);
-    }
-
-    .cta:active {
-      transform: translateY(0);
-      filter: brightness(0.96);
-      box-shadow:
-        inset 0 2px 6px rgba(15, 20, 25, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 6px 20px rgba(255, 106, 66, 0.32);
-    }
-
-    .cta:focus-visible {
-      outline: 2px solid var(--nova-dark-orange);
-      outline-offset: 3px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
       .cta {
-        transition-duration: 0.01ms;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.98rem 1.9rem;
+        font-weight: 600;
+        font-size: clamp(0.88rem, 2vw, 0.94rem);
+        letter-spacing: 0.045em;
+        color: #fffef9;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(15, 20, 25, 0.14);
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(246, 207, 155, 0.5);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 46%),
+          linear-gradient(
+            155deg,
+            var(--nova-orange) 0%,
+            #f75e32 40%,
+            var(--nova-dark-orange) 100%
+          );
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.32),
+          inset 0 -1px 0 rgba(232, 115, 30, 0.22),
+          0 10px 34px rgba(255, 106, 66, 0.38),
+          0 2px 10px rgba(15, 20, 25, 0.1);
+        transition:
+          transform 0.32s cubic-bezier(0.34, 1.15, 0.64, 1),
+          box-shadow 0.32s ease,
+          filter 0.32s ease,
+          border-color 0.32s ease,
+          background 0.32s ease;
       }
 
       .cta:hover {
-        transform: none;
+        transform: translateY(-2px);
+        border-color: rgba(246, 207, 155, 0.9);
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 221, 179, 0.38) 0%,
+            transparent 44%
+          ),
+          linear-gradient(
+            155deg,
+            var(--nova-active) 0%,
+            var(--nova-orange) 38%,
+            var(--nova-dark-orange) 100%
+          );
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.42),
+          inset 0 -1px 0 rgba(232, 115, 30, 0.14),
+          0 16px 46px rgba(255, 106, 66, 0.5),
+          0 6px 18px rgba(232, 115, 30, 0.28),
+          0 0 0 1px rgba(255, 221, 179, 0.25);
+        filter: brightness(1.04);
       }
-    }
 
-    .micro {
-      font-size: clamp(0.72rem, 1.8vw, 0.8rem);
-      opacity: 1;
-      margin-top: 0.75rem;
-      letter-spacing: 0.02em;
-      color: rgba(15, 20, 25, 0.52);
-    }
+      .cta:active {
+        transform: translateY(0);
+        filter: brightness(0.96);
+        box-shadow:
+          inset 0 2px 6px rgba(15, 20, 25, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2),
+          0 6px 20px rgba(255, 106, 66, 0.32);
+      }
 
-    .flow {
-      flex: 1 1 auto;
-      min-height: 0;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      position: relative;
-      margin-top: clamp(-1.25rem, -3vw, -0.5rem);
-      padding-top: clamp(1rem, 2.5vw, 1.5rem);
-      border-radius: clamp(18px, 3.5vw, 28px) clamp(18px, 3.5vw, 28px) 0 0;
-      background:
-        linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%),
-        url("gradients/backgradientpink.png") center/cover no-repeat;
-      background-blend-mode: normal, soft-light;
-      box-shadow: 0 -20px 60px rgba(6, 10, 18, 0.12);
-      padding-left: var(--pad-x);
-      padding-right: var(--pad-x);
-      padding-bottom: clamp(1rem, 2.5vw, 1.35rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: clamp(0.75rem, 2vw, 1rem);
-    }
+      .cta:focus-visible {
+        outline: 2px solid var(--nova-dark-orange);
+        outline-offset: 3px;
+      }
 
-    @media (min-height: 640px) and (min-width: 768px) {
+      @media (prefers-reduced-motion: reduce) {
+        .cta {
+          transition-duration: 0.01ms;
+        }
+
+        .cta:hover {
+          transform: none;
+        }
+      }
+
+      .micro {
+        font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+        opacity: 1;
+        margin-top: 0.75rem;
+        letter-spacing: 0.02em;
+        color: rgba(15, 20, 25, 0.52);
+      }
+
       .flow {
-        flex: 0 0 40%;
+        flex: 1 1 auto;
         min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        margin-top: clamp(-1.25rem, -3vw, -0.5rem);
+        padding-top: clamp(1rem, 2.5vw, 1.5rem);
+        border-radius: clamp(18px, 3.5vw, 28px) clamp(18px, 3.5vw, 28px) 0 0;
+        background:
+          linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%),
+          url("gradients/backgradientpink.png") center/cover no-repeat;
+        background-blend-mode: normal, soft-light;
+        box-shadow: 0 -20px 60px rgba(6, 10, 18, 0.12);
+        padding-left: var(--pad-x);
+        padding-right: var(--pad-x);
+        padding-bottom: clamp(1rem, 2.5vw, 1.35rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: clamp(0.75rem, 2vw, 1rem);
       }
-    }
 
-    .flow::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 72px;
-      pointer-events: none;
-      background: linear-gradient(180deg, rgba(250, 242, 250, 0.98) 0%, rgba(250, 247, 242, 0) 100%);
-      border-radius: inherit;
-    }
+      @media (min-height: 640px) and (min-width: 768px) {
+        .flow {
+          flex: 0 0 40%;
+          min-height: 0;
+        }
+      }
 
-    @media (max-width: 767px) {
-      .flow { padding-bottom: calc(var(--dock) + 2.25rem); }
-    }
+      .flow::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 72px;
+        pointer-events: none;
+        background: linear-gradient(
+          180deg,
+          rgba(250, 242, 250, 0.98) 0%,
+          rgba(250, 247, 242, 0) 100%
+        );
+        border-radius: inherit;
+      }
 
-    .flow-inner {
-      width: 100%;
-      max-width: var(--section-wide);
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: clamp(0.75rem, 2vw, 1rem);
-      align-items: stretch;
-    }
+      @media (max-width: 767px) {
+        .flow {
+          padding-bottom: calc(var(--dock) + 2.25rem);
+        }
+      }
 
-    @media (min-width: 768px) {
       .flow-inner {
-        grid-template-columns: repeat(3, 1fr);
-        gap: clamp(1rem, 2vw, 1.25rem);
+        width: 100%;
+        max-width: var(--section-wide);
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: clamp(0.75rem, 2vw, 1rem);
+        align-items: stretch;
       }
-    }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background: url("gradients/aboutgradient.png") -20% 80% / min(50vw, 420px) no-repeat;
-      opacity: 0.28;
-    }
+      @media (min-width: 768px) {
+        .flow-inner {
+          grid-template-columns: repeat(3, 1fr);
+          gap: clamp(1rem, 2vw, 1.25rem);
+        }
+      }
 
-    .panel {
-      width: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: clamp(0.85rem, 2vw, 1rem);
-      padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.5vw, 1.25rem);
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--card-border);
-      border-radius: calc(var(--radius-card) + 2px);
-      box-shadow: var(--shadow-soft);
-      min-height: 100%;
-    }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: url("gradients/aboutgradient.png") -20% 80% /
+          min(50vw, 420px) no-repeat;
+        opacity: 0.28;
+      }
 
-    .panel-icon {
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-thumb);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 235, 227, 0.65) 100%);
-      border: 1px solid rgba(15, 20, 25, 0.06);
-      color: var(--ink);
-    }
+      .panel {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: clamp(0.85rem, 2vw, 1rem);
+        padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.5vw, 1.25rem);
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid var(--card-border);
+        border-radius: calc(var(--radius-card) + 2px);
+        box-shadow: var(--shadow-soft);
+        min-height: 100%;
+      }
 
-    .panel-icon svg {
-      width: 26px;
-      height: 26px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.65;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+      .panel-icon {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-thumb);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(240, 235, 227, 0.65) 100%
+        );
+        border: 1px solid rgba(15, 20, 25, 0.06);
+        color: var(--ink);
+      }
 
-    .panel-body { min-width: 0; }
+      .panel-icon svg {
+        width: 26px;
+        height: 26px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.65;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
 
-    .panel h2 {
-      font-family: "Perfectly Nineties", Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(1.05rem, 2.2vw, 1.28rem);
-      color: var(--ink);
-      margin-bottom: 0.35rem;
-      letter-spacing: -0.02em;
-    }
+      .panel-body {
+        min-width: 0;
+      }
 
-    .panel p {
-      font-size: clamp(0.8rem, 1.65vw, 0.88rem);
-      line-height: 1.55;
-      color: var(--ink-muted);
-    }
+      .panel h2 {
+        font-family: "Perfectly Nineties", Georgia, serif;
+        font-weight: 400;
+        font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+        color: var(--ink);
+        margin-bottom: 0.35rem;
+        letter-spacing: -0.02em;
+      }
 
-    .site-footer {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: var(--section-wide);
-      margin: clamp(0.25rem, 1.5vw, 0.75rem) auto 0;
-      padding-top: clamp(1rem, 2.5vw, 1.5rem);
-      border-top: 1px solid rgba(15, 20, 25, 0.08);
-      text-align: center;
-    }
+      .panel p {
+        font-size: clamp(0.8rem, 1.65vw, 0.88rem);
+        line-height: 1.55;
+        color: var(--ink-muted);
+      }
 
-    .site-footer p {
-      font-size: clamp(0.68rem, 1.5vw, 0.75rem);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      opacity: 0.88;
-    }
+      .site-footer {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: var(--section-wide);
+        margin: clamp(0.25rem, 1.5vw, 0.75rem) auto 0;
+        padding-top: clamp(1rem, 2.5vw, 1.5rem);
+        border-top: 1px solid rgba(15, 20, 25, 0.08);
+        text-align: center;
+      }
 
-    .hero-cta-wrap {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
+      .site-footer p {
+        font-size: clamp(0.68rem, 1.5vw, 0.75rem);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+        opacity: 0.88;
+      }
 
-    @media (min-width: 768px) {
-      .hero-cta-wrap { display: flex; }
-    }
+      .hero-cta-wrap {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
 
-    @media (max-width: 767px) {
-      .top .cta,
-      .top .micro { display: none; }
-    }
+      @media (min-width: 768px) {
+        .hero-cta-wrap {
+          display: flex;
+        }
+      }
 
-    .bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 20;
-      padding: 0.7rem var(--pad-x) max(0.7rem, env(safe-area-inset-bottom));
-      background: rgba(250, 247, 242, 0.82);
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      border-top: 1px solid rgba(15, 20, 25, 0.07);
-      box-shadow: 0 -8px 32px rgba(15, 20, 25, 0.04);
-      display: flex;
-      justify-content: center;
-    }
+      @media (max-width: 767px) {
+        .top .cta,
+        .top .micro {
+          display: none;
+        }
+      }
 
-    .bar-inner {
-      width: 100%;
-      max-width: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.45rem;
-    }
+      .bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        padding: 0.7rem var(--pad-x) max(0.7rem, env(safe-area-inset-bottom));
+        background: rgba(250, 247, 242, 0.82);
+        backdrop-filter: blur(16px) saturate(1.2);
+        -webkit-backdrop-filter: blur(16px) saturate(1.2);
+        border-top: 1px solid rgba(15, 20, 25, 0.07);
+        box-shadow: 0 -8px 32px rgba(15, 20, 25, 0.04);
+        display: flex;
+        justify-content: center;
+      }
 
-    .bar-micro {
-      font-size: 0.72rem;
-      color: var(--ink-muted);
-      opacity: 0.9;
-      text-align: center;
-      letter-spacing: 0.02em;
-      line-height: 1.35;
-      padding: 0 0.5rem;
-    }
+      .bar-inner {
+        width: 100%;
+        max-width: 420px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.45rem;
+      }
 
-    @media (min-width: 768px) {
-      .bar { display: none; }
-    }
+      .bar-micro {
+        font-size: 0.72rem;
+        color: var(--ink-muted);
+        opacity: 0.9;
+        text-align: center;
+        letter-spacing: 0.02em;
+        line-height: 1.35;
+        padding: 0 0.5rem;
+      }
 
-    .bar .cta {
-      width: 100%;
-      justify-content: center;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <section class="top" aria-labelledby="v4-h">
-      <div class="top-bg" aria-hidden="true">
-        <img src="gradients/howworksgradient.webp" alt="" width="1000" height="1200" fetchpriority="high" decoding="async" />
-      </div>
-      <div class="top-inner">
-        <img class="logo" src="logo/Logo.png" alt="Nova" width="248" height="66" decoding="async" />
-        <h1 id="v4-h">It's a hard time. At least the next step shouldn't be</h1>
-        <p class="sub">Move from stress to clarity: a <strong>free personalised recommendation</strong> with AI and family law professionals supportive, private, no pressure.</p>
-        <div class="hero-cta-wrap">
-          <a class="cta" href="#">Get your free recommendation</a>
-          <p class="micro">5–10 minutes · Secure &amp; confidential · No obligation</p>
+      @media (min-width: 768px) {
+        .bar {
+          display: none;
+        }
+      }
+
+      .bar .cta {
+        width: 100%;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="top" aria-labelledby="v4-h">
+        <div class="top-bg" aria-hidden="true">
+          <img
+            src="gradients/howworksgradient.webp"
+            alt=""
+            width="1000"
+            height="1200"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
-      </div>
-    </section>
-    <div class="flow">
-      <div class="flow-inner">
-        <div class="panel">
-          <div class="panel-body">
-            <h2>Problem</h2>
-            <p>You’re juggling emotions and big decisions. You need answers that fit your life — not generic checklists.</p>
+        <div class="top-inner">
+          <img
+            class="logo"
+            src="logo/Logo.png"
+            alt="Nova"
+            width="248"
+            height="66"
+            decoding="async"
+          />
+          <h1 id="v4-h">
+            It's a hard time. At least the next step shouldn't be
+          </h1>
+          <p class="sub">
+            Move from stress to clarity: a
+            <strong>free personalised recommendation</strong> with AI and family
+            law professionals supportive, private, no pressure.
+          </p>
+          <div class="hero-cta-wrap">
+            <a class="cta" href="#">Get your free recommendation</a>
+            <p class="micro">
+              5–10 minutes · Secure &amp; confidential · No obligation
+            </p>
           </div>
         </div>
-        <div class="panel">
-          <div class="panel-body">
-            <h2>Solution</h2>
-            <p>Nova helps you understand options and connects you with the right expert at the right time.</p>
+      </section>
+      <div class="flow">
+        <div class="flow-inner">
+          <div class="panel">
+            <div class="panel-body">
+              <h2>Problem</h2>
+              <p>
+                You’re juggling emotions and big decisions. You need answers
+                that fit your life — not generic checklists.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <h2>Solution</h2>
+              <p>
+                Nova helps you understand options and connects you with the
+                right expert at the right time.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <h2>How it works</h2>
+              <p>
+                Short questions — your summary — optional next step with a
+                specialist.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="panel">
-          <div class="panel-body">
-            <h2>How it works</h2>
-            <p>Short questions — your summary — optional next step with a specialist.</p>
-          </div>
-        </div>
+        <footer class="site-footer">
+          <p>© Novalaw · Copyright preserved · All rights reserved</p>
+        </footer>
       </div>
-      <footer class="site-footer">
-        <p>© Novalaw · Copyright preserved · All rights reserved</p>
-      </footer>
+    </main>
+    <div class="bar" role="region" aria-label="Primary action">
+      <div class="bar-inner">
+        <a class="cta" href="#">Get your free recommendation</a>
+        <p class="bar-micro">
+          5–10 minutes · Secure &amp; confidential · No obligation
+        </p>
+      </div>
     </div>
-  </main>
-  <div class="bar" role="region" aria-label="Primary action">
-    <div class="bar-inner">
-      <a class="cta" href="#">Get Started Now</a>
-      <p class="bar-micro">5–10 minutes · Secure &amp; confidential · No obligation</p>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
