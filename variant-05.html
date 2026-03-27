@@ -2,121 +2,235 @@
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Child arrangements & separation help — Nova</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Nova — Variant 05</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    @font-face { font-family: "Perfectly Nineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
-    @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-style: normal; font-display: swap; }
-    * { box-sizing: border-box; margin: 0; }
-    :root { --dock: calc(3.85rem + env(safe-area-inset-bottom, 0px)); }
-    html, body { height: 100%; overflow: hidden; }
+    :root {
+      --nova-dark-orange: #E8731E;
+      --nova-active: #FFDDB3;
+      --copy: #2a1406;
+      --copy-muted: rgba(42, 20, 6, 0.82);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      overflow-x: clip;
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
-      font-family: "Neue Haas Display", system-ui, sans-serif;
-      background: #0a0c10; color: #f1f5f9; -webkit-font-smoothing: antialiased;
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--copy);
+      -webkit-font-smoothing: antialiased;
+      background: linear-gradient(155deg, var(--nova-dark-orange) 0%, var(--nova-active) 100%);
+      background-attachment: fixed;
       min-height: 100dvh;
-      max-height: 100dvh;
-      display: flex;
-      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: clip;
     }
-    main {
-      flex: 1 1 auto;
-      min-height: 0;
-      max-height: calc(100dvh - var(--dock));
+
+    .shell {
+      min-height: 100dvh;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding:
+        max(clamp(1rem, 4vw, 1.75rem), env(safe-area-inset-top))
+        max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-right))
+        max(clamp(1.25rem, 5vw, 2rem), env(safe-area-inset-bottom))
+        max(clamp(1rem, 4vw, 1.5rem), env(safe-area-inset-left));
+    }
+
+    .grid {
+      width: 100%;
+      max-width: min(1080px, 100%);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(1.5rem, 4vw, 2.75rem);
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: clamp(2rem, 5vw, 3.5rem);
+      }
+    }
+
+    .copy {
+      order: 1;
+      text-align: center;
+      max-width: 36rem;
+      margin-inline: auto;
+    }
+
+    @media (min-width: 768px) {
+      .copy {
+        text-align: left;
+        margin-inline: 0;
+        justify-self: start;
+      }
+    }
+
+    .copy h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--copy);
+      text-wrap: balance;
+      margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    .copy .lede {
+      font-size: clamp(0.95rem, 2.4vw, 1.08rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--copy-muted);
+      margin-bottom: clamp(1.25rem, 3.5vw, 1.75rem);
+      max-width: 38ch;
+      margin-inline: auto;
+    }
+
+    @media (min-width: 768px) {
+      .copy .lede {
+        margin-inline: 0;
+      }
+    }
+
+    .copy .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .copy .cta-row {
+        justify-content: flex-start;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.85rem 1.35rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid #1a0d04;
+      outline-offset: 3px;
+    }
+
+    .btn--primary {
+      background: #1a0d04;
+      color: #fffaf5;
+      box-shadow: 0 4px 16px rgba(26, 13, 4, 0.25);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(26, 13, 4, 0.3);
+    }
+
+    .btn--ghost {
+      background: rgba(255, 255, 255, 0.45);
+      color: var(--copy);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .visual {
+      order: 2;
+      width: 100%;
+      max-width: min(420px, 100%);
+      margin-inline: auto;
+    }
+
+    @media (min-width: 768px) {
+      .visual {
+        order: 2;
+        max-width: none;
+        margin-inline: 0;
+        justify-self: stretch;
+      }
+    }
+
+    .visual figure {
+      margin: 0;
+      /* border-radius: clamp(14px, 3vw, 22px); */
       overflow: hidden;
+      /* box-shadow:
+        0 4px 6px rgba(42, 20, 6, 0.08),
+        0 28px 50px rgba(42, 20, 6, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.35) inset; */
     }
-    .strip {
-      position: relative;
-      flex: 1 1 52%;
-      min-height: 0;
-      display: flex; align-items: center; justify-content: center;
-      padding: 1rem 1.1rem;
+
+    .visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
-    .strip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .strip::after { content: ""; position: absolute; inset: 0; background: rgba(6,8,12,0.55); }
-    .strip-inner { position: relative; z-index: 2; text-align: center; max-width: 520px; }
-    .logo { height: 28px; width: auto; margin: 0 auto 1rem; filter: brightness(0) invert(1); }
-    h1 {
-      font-family: "Perfectly Nineties", Georgia, serif; font-weight: 400;
-      font-size: clamp(1.35rem, 4vw, 2.35rem); line-height: 1.08; letter-spacing: -0.03em;
-      text-wrap: balance; margin-bottom: 0.45rem;
-    }
-    .strip-inner .lead { font-size: clamp(0.8rem, 2vw, 0.92rem); opacity: 0.9; margin-bottom: 0.65rem; }
-    .cta {
-      display: inline-flex; padding: 0.95rem 1.75rem; font-weight: 500; color: #0c1220; text-decoration: none;
-      background: #fff; border-radius: 999px;
-    }
-    .micro { font-size: 0.75rem; opacity: 0.7; margin-top: 0.55rem; }
-    .band {
-      flex: 0 0 auto;
-      padding: 0.65rem 1rem 0.75rem; background: #111827;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .band h2 {
-      font-family: "Perfectly Nineties", Georgia, serif; font-weight: 400; font-size: clamp(1rem, 2.5vw, 1.25rem); text-align: center; margin-bottom: 0.45rem;
-    }
-    .steps { max-width: 520px; margin: 0 auto; display: grid; gap: 0.35rem; }
-    .step { display: flex; gap: 0.55rem; align-items: flex-start; }
-    .step span {
-      flex-shrink: 0; width: 1.5rem; height: 1.5rem; border-radius: 999px; background: rgba(255,255,255,0.1);
-      display: grid; place-items: center; font-size: 0.72rem; font-weight: 500;
-    }
-    .step p { font-size: clamp(0.7rem, 1.6vw, 0.8rem); line-height: 1.4; color: #cbd5e1; }
-    .img-band {
-      position: relative;
-      flex: 0 0 18vh;
-      min-height: 0;
-      max-height: 22vh;
-    }
-    .img-band img { width: 100%; height: 100%; min-height: 0; object-fit: cover; display: block; }
-    .img-band figcaption {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 0.45rem 0.65rem;
-      background: linear-gradient(0deg, rgba(0,0,0,0.82), transparent);
-      font-size: 0.68rem; font-weight: 500;
-    }
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.25;
-      background: url("gradients/howworksgradient.webp") 100% 0 / 60% no-repeat;
-    }
-    .dock {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
-      padding: 0.65rem 1rem max(0.65rem, env(safe-area-inset-bottom));
-      background: rgba(10,12,16,0.92); backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .dock .cta { width: 100%; max-width: 440px; margin: 0 auto; display: flex; justify-content: center; }
+
+    /* @media (max-width: 767px) {
+      .visual img {
+        aspect-ratio: 16 / 10;
+        max-height: min(52vh, 340px);
+      }
+    } */
   </style>
 </head>
 <body>
-  <main>
-    <section class="strip" aria-labelledby="v5-h">
-      <img src="hero/family.webp" alt="" width="1200" height="800" fetchpriority="high" decoding="async" />
-      <div class="strip-inner">
-        <img class="logo" src="logo/Logo.png" alt="Nova" width="120" height="32" decoding="async" />
-        <h1 id="v5-h">Child arrangements, money, separation — get a clear next step</h1>
-        <p class="lead">For parents and partners navigating divorce: <strong>free personalised guidance</strong> from AI + family law experts.</p>
-        <a class="cta" href="#">Get Started Now</a>
-        <p class="micro">5–10 min · Confidential · No obligation</p>
+  <main class="shell">
+    <div class="grid">
+      <div class="copy">
+        <h1>The smartest first move in any separation</h1>
+        <p class="lede">
+          Understand your options before you commit to anything. Nova gives you an expert-informed recommendation
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="#">Get your free recommendation</a>
+        </div>
       </div>
-    </section>
-
-    <figure class="img-band">
-      <img src="hero/doorgirl.webp" alt="" width="1000" height="700" decoding="async" />
-      <figcaption>Real-life context — your situation, your pace.</figcaption>
-    </figure>
-
-    <div class="band">
-      <h2>How it works</h2>
-      <div class="steps">
-        <div class="step"><span>1</span><p>Tell us what you’re dealing with (5–10 minutes).</p></div>
-        <div class="step"><span>2</span><p>Receive a tailored summary of sensible options.</p></div>
-        <div class="step"><span>3</span><p>We help you reach the right professional when you’re ready.</p></div>
+      <div class="visual">
+        <figure>
+          <img
+            src="hero/opposite2.webp"
+            alt="Two people facing each other in a thoughtful moment"
+            width="640"
+            height="800"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
       </div>
     </div>
-
   </main>
-  <div class="dock"><a class="cta" href="#">Get Started Now</a></div>
 </body>
 </html>
