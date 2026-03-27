@@ -8,25 +8,39 @@
     @font-face { font-family: "Perfectly Nineties"; src: url("fonts/PerfectlyNineties-Regular.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
     @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayRoman.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
     @font-face { font-family: "Neue Haas Display"; src: url("fonts/NeueHaasDisplayMediu.woff") format("woff"); font-weight: 500; font-style: normal; font-display: swap; }
+    :root {
+      --ink: #2a1626;
+      --ink-soft: #4e3045;
+      --blush: #fdf8fb;
+      --blush-deep: #faf3f8;
+      --rose: #c21854;
+    }
     * { box-sizing: border-box; margin: 0; }
     html {
       overflow-x: clip;
       -webkit-text-size-adjust: 100%;
+      background-color: var(--blush-deep);
     }
     body {
       font-family: "Neue Haas Display", system-ui, sans-serif;
-      color: #4a1a40;
+      color: var(--ink-soft);
       -webkit-font-smoothing: antialiased;
-      background: #fff5fc;
+      text-rendering: optimizeLegibility;
+      background: linear-gradient(
+        165deg,
+        rgba(253, 248, 251, 0.42) 0%,
+        rgba(255, 249, 252, 0.32) 42%,
+        rgba(250, 243, 248, 0.45) 100%
+      );
       min-height: 100dvh;
       min-height: 100vh;
       overflow-x: clip;
       overflow-y: auto;
     }
     body::before {
-      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.14;
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.09;
       background: url("gradients/backgradientpink.png") center/cover no-repeat;
-      filter: hue-rotate(310deg) saturate(0.9);
+      filter: hue-rotate(310deg) saturate(0.75);
     }
     .hero {
       position: relative; z-index: 1;
@@ -46,50 +60,117 @@
     }
     .hero-bg::after {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(255,245,252, 0.94) 0%,
-        rgba(255,255,255, 0.48) 40%,
-        rgba(252,230,245, 0.93) 100%
-      );
+      background:
+        radial-gradient(115% 80% at 50% 8%, rgba(255, 253, 255, 0.42) 0%, rgba(255, 250, 252, 0.12) 38%, transparent 58%),
+        linear-gradient(
+          188deg,
+          rgba(250, 244, 249, 0.97) 0%,
+          rgba(255, 255, 255, 0.22) 18%,
+          rgba(255, 252, 254, 0.5) 40%,
+          rgba(252, 242, 248, 0.72) 62%,
+          rgba(246, 234, 242, 0.9) 82%,
+          rgba(238, 222, 232, 0.98) 100%
+        );
     }
     .hero-inner {
-      position: relative; z-index: 2; width: 100%; max-width: min(560px, 100%);
+      position: relative; z-index: 2; width: 100%; max-width: min(28rem, 100%);
       flex-shrink: 0;
       text-align: center;
+      padding-inline: clamp(0.25rem, 2vw, 0.5rem);
     }
     .mark {
-      height: clamp(34px, 6vw, 44px); width: auto;
-      margin-bottom: clamp(0.9rem, 2.8vw, 1.35rem); opacity: 0.95;
+      height: clamp(32px, 5.5vw, 42px); width: auto;
+      margin-bottom: clamp(1.05rem, 3vw, 1.5rem);
+      opacity: 0.92;
+      filter: drop-shadow(0 2px 16px rgba(53, 16, 48, 0.06));
     }
     h1 {
       font-family: "Perfectly Nineties", Georgia, serif; font-weight: 400;
-      color: #351030;
-      font-size: clamp(2rem, 7.5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em;
-      margin-bottom: clamp(0.85rem, 2.4vw, 1.25rem); text-wrap: balance;
+      color: var(--ink);
+      font-size: clamp(2.05rem, 7vw, 3.5rem);
+      line-height: 1.06;
+      letter-spacing: -0.028em;
+      margin-bottom: clamp(1rem, 2.6vw, 1.35rem);
+      text-wrap: balance;
       margin-left: auto; margin-right: auto;
-      max-width: 22ch;
+      max-width: min(18ch, 100%);
+      font-feature-settings: "kern" 1;
     }
     .sub {
-      font-size: clamp(1rem, 3.2vw, 1.2rem); line-height: 1.45; color: #6b4560;
-      margin-bottom: clamp(1rem, 3vw, 1.35rem);
-      max-width: 36ch; margin-left: auto; margin-right: auto;
+      font-size: clamp(0.98rem, 2.9vw, 1.125rem);
+      line-height: 1.58;
+      letter-spacing: 0.006em;
+      font-weight: 400;
+      color: var(--ink-soft);
+      margin-bottom: 0;
+      padding-bottom: clamp(1.35rem, 4vw, 1.85rem);
+      max-width: 32ch;
+      margin-left: auto; margin-right: auto;
+      border-bottom: 1px solid #000;
     }
     .detail {
-      font-size: clamp(0.88rem, 2.2vw, 0.98rem); line-height: 1.5; color: #6b4560;
+      font-size: clamp(0.88rem, 2.2vw, 0.98rem); line-height: 1.55; color: var(--ink-soft);
       margin-bottom: clamp(1.35rem, 4.5vw, 2rem);
       max-width: 38ch; margin-left: auto; margin-right: auto;
     }
-    .detail em { font-style: italic; color: #6b4560; }
+    .detail em { font-style: italic; color: var(--ink-soft); }
     .cta {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 100%; max-width: min(320px, 100%); padding: 0.95rem 1.5rem;
-      font-family: inherit; font-size: clamp(1rem, 2.8vw, 1.12rem); font-weight: 500;
-      color: #fff; background: #e11d48; border-radius: 999px; text-decoration: none;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+      width: auto;
+      max-width: 100%;
+      margin-top: clamp(1.35rem, 4vw, 1.85rem);
+      padding: 0.9rem clamp(1rem, 4vw, 1.65rem);
+      font-family: inherit;
+      font-size: clamp(0.8rem, 2.3vw, 1.05rem);
+      white-space: nowrap;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: #fffefd;
+      border-radius: 999px; text-decoration: none;
+      background:
+        radial-gradient(120% 95% at 50% -32%, rgba(255, 245, 250, 0.4) 0%, transparent 50%),
+        linear-gradient(158deg, #e11d52 0%, var(--rose) 48%, #9f1538 100%);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 12px 36px rgba(190, 18, 60, 0.22);
+      transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
     }
-    .cta:focus-visible { outline: 2px solid #fb7185; outline-offset: 3px; }
-    .micro { margin-top: clamp(0.7rem, 2.2vw, 1rem); font-size: 0.78rem; color: #8a5a78; }
+    .cta:hover {
+      background:
+        radial-gradient(115% 90% at 50% -26%, rgba(255, 248, 252, 0.52) 0%, transparent 46%),
+        linear-gradient(158deg, #f47290 0%, #e84a6f 42%, #d61f4a 100%);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.26) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 18px 44px rgba(190, 18, 60, 0.28),
+        0 0 36px rgba(251, 113, 133, 0.22);
+      transform: translateY(-2px);
+    }
+    .cta:active {
+      background:
+        radial-gradient(120% 95% at 50% -32%, rgba(255, 245, 250, 0.22) 0%, transparent 50%),
+        linear-gradient(158deg, var(--rose) 0%, #8f1334 100%);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.12) inset,
+        0 8px 26px rgba(157, 23, 77, 0.26);
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cta { transition-duration: 0.01ms; }
+      .cta:hover, .cta:active { transform: none; }
+    }
+    .cta:focus-visible { outline: 2px solid #f9a8c4; outline-offset: 3px; }
+    .micro {
+      margin-top: clamp(0.85rem, 2.4vw, 1.15rem);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #000;
+    }
 
   </style>
 </head>
@@ -103,7 +184,7 @@
         <img class="mark" src="logo/Logo.png" alt="Nova" width="165" height="44" decoding="async" />
         <h1 id="v37-h">Going through a separation?</h1>
         <p class="sub">Free help to see what’s next — simple steps and trusted family-law experts. No blame, no pressure, just support that fits you.</p>
-        <a class="cta" href="#">Get started free</a>
+        <a class="cta" href="#">Get your free recommendation</a>
         <p class="micro">5–10 minutes · No obligation · Secure &amp; confidential</p>
       </div>
     </section>

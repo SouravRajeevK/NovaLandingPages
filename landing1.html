@@ -42,7 +42,12 @@
       --surface: #f6f4f2;
       --accent: #1a2f4a;
       --accent-hot: #0f1f33;
-      --cta-shadow: rgba(26, 47, 74, 0.35);
+      --nova-dark-orange: #e8731e;
+      --nova-dark-amber: #f6cf9b;
+      --nova-active: #ffddb3;
+      --nova-orange: #ff6a42;
+      --cta-shadow: rgba(232, 115, 30, 0.38);
+      --cta-shadow-strong: rgba(200, 85, 18, 0.45);
     }
 
     * { box-sizing: border-box; }
@@ -236,9 +241,13 @@
     }
 
     .cta {
+      --cta-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.45rem;
       width: 100%;
       max-width: 20rem;
       padding: 1.05rem 1.5rem;
@@ -247,14 +256,42 @@
       font-weight: 500;
       letter-spacing: 0.01em;
       color: #fff;
-      background: linear-gradient(180deg, #243d5c 0%, var(--accent) 55%, var(--accent-hot) 100%);
+      background:
+        linear-gradient(180deg, rgba(255, 221, 179, 0.28) 0%, transparent 52%),
+        linear-gradient(180deg, var(--nova-orange) 0%, var(--nova-dark-orange) 100%);
       border: none;
       border-radius: 999px;
       cursor: pointer;
       text-decoration: none;
       text-align: center;
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 14px 36px var(--cta-shadow);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 14px 36px var(--cta-shadow);
+      transition:
+        transform 0.4s var(--cta-ease),
+        box-shadow 0.4s var(--cta-ease),
+        filter 0.35s ease;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(255, 255, 255, 0.18) 50%,
+        transparent 62%,
+        transparent 100%
+      );
+      transform: translateX(-130%) skewX(-14deg);
+      opacity: 0;
+      transition:
+        transform 0.75s var(--cta-ease),
+        opacity 0.35s ease;
+      pointer-events: none;
     }
 
     @media (min-width: 480px) {
@@ -262,24 +299,69 @@
     }
 
     .cta:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.04);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 20px 44px var(--cta-shadow);
+      transform: translateY(-3px);
+      filter: brightness(1.06);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.22) inset,
+        0 0 0 1px rgba(246, 207, 155, 0.35),
+        0 22px 48px var(--cta-shadow-strong);
+    }
+
+    .cta:hover::before {
+      opacity: 1;
+      transform: translateX(130%) skewX(-14deg);
     }
 
     .cta:active {
       transform: translateY(0);
+      filter: brightness(0.98);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.1) inset,
+        0 10px 28px var(--cta-shadow);
+      transition-duration: 0.12s;
+    }
+
+    .cta:active::before {
+      opacity: 0.2;
+    }
+
+    .cta svg {
+      flex-shrink: 0;
+      transition: transform 0.45s var(--cta-ease);
+    }
+
+    .cta:hover svg {
+      transform: translateX(5px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta,
+      .cta::before,
+      .cta svg {
+        transition-duration: 0.01ms !important;
+      }
+      .cta:hover,
+      .cta:active {
+        transform: none;
+      }
+      .cta:hover svg {
+        transform: none;
+      }
+      .cta:hover::before {
+        opacity: 0;
+        transform: translateX(-130%) skewX(-14deg);
+      }
     }
 
     .cta:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--nova-dark-orange);
       outline-offset: 3px;
     }
 
     .ad-micro {
       margin: 0;
       font-size: 0.8125rem;
-      color: var(--muted);
+      /* color: var(--muted); */
       line-height: 1.45;
       max-width: 22rem;
     }
@@ -315,7 +397,12 @@
             Get a <strong>free, personalised recommendation</strong> — AI and award-winning family law professionals help you see your options, then connect you with the right expert when you’re ready.
           </p>
           <div class="ad-cta-block">
-            <a class="cta" href="#">Get your free recommendation</a>
+            <a class="cta" href="#">
+              Get your free recommendation
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
             <p class="ad-micro">Takes 5–10 minutes. No obligation. Secure and private.</p>
           </div>
         </div>
@@ -335,7 +422,7 @@
   </main>
 
   <footer class="ad-foot">
-    <p>© Nova. Informational only; not legal advice.</p>
+    <p>© NovaLaw. All rights reserved.</p>
   </footer>
 </body>
 </html>

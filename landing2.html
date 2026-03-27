@@ -16,6 +16,10 @@
       --ink: #141414;
       --muted: #4a4a4a;
       --container: min(100% - 2rem, 1140px);
+      --nova-dark-orange: #E8731E;
+      --nova-dark-amber: #F6CF9B;
+      --nova-active: #FFDDB3;
+      --nova-orange: #FF6A42;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -29,7 +33,7 @@
         radial-gradient(ellipse 85% 60% at 92% 6%, rgba(200, 175, 235, 0.38), transparent 58%),
         radial-gradient(ellipse 70% 50% at 48% -5%, rgba(255, 205, 175, 0.35), transparent 52%),
         radial-gradient(ellipse 75% 55% at 8% 88%, rgba(240, 175, 190, 0.36), transparent 55%),
-        url("gradients/backgradientpink.png");
+        url("gradients/howworksgradient.webp");
       background-size: auto, auto, auto, cover;
       background-position: center, center, center, center;
       background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
@@ -93,7 +97,18 @@
       background: var(--ink);
       color: #fff;
     }
-    .btn-pill-solid:hover { box-shadow: 0 6px 20px rgba(20, 20, 20, 0.18); }
+    .btn-pill-solid:hover {
+      background: linear-gradient(135deg, var(--nova-orange) 0%, var(--nova-dark-orange) 100%);
+      color: #fff;
+      box-shadow:
+        0 10px 32px rgba(255, 106, 66, 0.42),
+        0 0 0 1px rgba(246, 207, 155, 0.55),
+        inset 0 1px 0 rgba(255, 221, 179, 0.65);
+    }
+    .btn-pill-solid:focus-visible {
+      outline: 2px solid var(--nova-orange);
+      outline-offset: 3px;
+    }
 
     .container { width: var(--container); margin-inline: auto; padding-inline: 1rem; }
 
@@ -179,7 +194,7 @@
             <h1 id="hero-title">Relationships are complicated. Your divorce needn&rsquo;t be.</h1>
             <p class="lead">Tell us your situation in a few minutes and get a clear, private recommendation — no obligation.</p>
             <div class="hero-ctas">
-              <a class="btn-pill btn-pill-solid sans" href="#">Get started now</a>
+              <a class="btn-pill btn-pill-solid sans" href="#">Get your free recommendation</a>
             </div>
           </div>
           <div class="hero-art">
