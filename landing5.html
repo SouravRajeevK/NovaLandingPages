@@ -44,6 +44,12 @@
         max(clamp(0.75rem, 3vw, 1.5rem), env(safe-area-inset-left));
     }
     .hero-bg { position: absolute; inset: 0; z-index: 0; min-height: 100%; }
+    .hero-bg picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+    }
     .hero-bg img {
       width: 100%; height: 100%; min-height: 100%;
       object-fit: cover; object-position: 50% 35%;
@@ -101,13 +107,40 @@
     .cta:focus-visible { outline: 2px solid var(--nova-dark-orange); outline-offset: 3px; }
     .micro { margin-top: clamp(0.7rem, 2.2vw, 1rem); font-size: 0.78rem; color: #6b6580; }
 
+    @media (max-width: 768px) {
+      .hero-inner {
+        padding: clamp(1.15rem, 4vw, 1.65rem) clamp(1rem, 4vw, 1.35rem);
+        border-radius: 1.25rem;
+        background: rgba(250, 248, 255, 0.78);
+        backdrop-filter: blur(18px) saturate(1.12);
+        -webkit-backdrop-filter: blur(18px) saturate(1.12);
+        box-shadow:
+          0 4px 24px rgba(45, 38, 64, 0.07),
+          0 1px 0 rgba(255, 255, 255, 0.9) inset;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+      }
+      .hero-inner .mark {
+        margin-bottom: clamp(0.75rem, 2.5vw, 1.1rem);
+      }
+    }
+    @supports not (backdrop-filter: blur(1px)) {
+      @media (max-width: 768px) {
+        .hero-inner {
+          background: rgba(250, 248, 255, 0.92);
+        }
+      }
+    }
+
   </style>
 </head>
 <body>
   <main>
     <section class="hero" aria-labelledby="v3-h">
       <div class="hero-bg" aria-hidden="true">
-        <img src="hero/oppositecouples.webp" alt="" width="1200" height="1600" fetchpriority="high" decoding="async" />
+        <picture>
+          <source media="(max-width: 768px)" srcset="hero/oppositeclose.webp" type="image/webp" />
+          <img src="hero/oppositecouples.webp" alt="" width="1200" height="1600" fetchpriority="high" decoding="async" />
+        </picture>
       </div>
       <div class="hero-inner">
         <img class="mark" src="logo/Logo.png" alt="Nova" />

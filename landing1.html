@@ -381,6 +381,61 @@
     footer.ad-foot p {
       margin: 0;
     }
+
+    /* Mobile: must follow base .ad-logo / .ad-cta-block / .ad-micro rules or later rules override */
+    @media (max-width: 719px) {
+      .ad-logo {
+        display: none;
+      }
+
+      .ad-copy {
+        text-align: center;
+        margin-inline: auto;
+      }
+
+      .ad-promise {
+        margin-inline: auto;
+      }
+
+      .ad-cta-block {
+        align-items: center;
+      }
+
+      .ad-cta-block .cta {
+        width: auto;
+        min-width: min(15rem, 100%);
+        align-self: center;
+      }
+
+      .ad-micro {
+        margin-inline: auto;
+        text-align: center;
+      }
+
+      .ad-visual {
+        min-height: min(22vh, 180px);
+      }
+
+      .ad-grid {
+        padding: clamp(0.85rem, 3.5vw, 1.15rem);
+        border-radius: clamp(18px, 4vw, 24px);
+        /* background: rgba(255, 255, 255, 0.38); */
+        /* border: 1px solid rgba(255, 255, 255, 0.52); */
+        /* box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.65) inset,
+          0 18px 40px -28px rgba(15, 23, 42, 0.28); */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    }
+
+    @media (max-width: 719px) and (prefers-reduced-motion: reduce) {
+      .ad-grid {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.55);
+      }
+    }
   </style>
 </head>
 <body>
