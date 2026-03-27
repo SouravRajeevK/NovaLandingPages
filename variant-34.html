@@ -263,9 +263,14 @@
     .card-visual .float-berry:nth-child(3) { top: 20%; right: 26%; width: 7px; height: 7px; opacity: 0.75; }
     .card-visual .float-berry:nth-child(4) { top: 9%; right: 38%; width: 6px; height: 6px; }
     @media (max-width: 720px) {
+      .card-wrap {
+        align-items: flex-start;
+      }
       .card {
         grid-template-columns: 1fr;
         min-height: unset;
+        padding-top: 70px;
+        margin-top: 20px;
       }
       .card-visual {
         order: -1;
